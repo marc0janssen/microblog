@@ -1,2 +1,2 @@
 # microblog
-Archive for Mirco.blog
+Archive for Micro.blog
