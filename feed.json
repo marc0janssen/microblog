@@ -7,6 +7,38 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2023/02/17/listen-to-this.html",
+				
+				"content_html": "<p>Listen to this&hellip;. #metric @metric 🎶👊🏻 <a href=\"https://open.spotify.com/playlist/6KB273v1ka4kHlLJRjnP6n?si=ac3ed5b163244e27\">Top songs Metric</a></p>\n",
+				"content_text": "Listen to this.... #metric @metric 🎶👊🏻 [Top songs Metric](https://open.spotify.com/playlist/6KB273v1ka4kHlLJRjnP6n?si=ac3ed5b163244e27)\n",
+				"date_published": "2023-02-17T18:42:31+01:00",
+				"url": "https://micro.mjanssen.nl/2023/02/17/listen-to-this.html"
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2023/02/17/metric-metric-live.html",
+				
+				"content_html": "<p>#Metric @metric 🎶❤️🙌</p>\n<blockquote>\n<p>Live It Out <a href=\"https://songwhip.com/metric/liveitout\">songwhip.com/metric/li&hellip;</a></p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
+				"content_text": "#Metric @metric 🎶❤️🙌\n\n> Live It Out [songwhip.com/metric/li...](https://songwhip.com/metric/liveitout)\n\n<img src=\"uploads/2023/768b0a2fe3.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"date_published": "2023-02-17T17:39:13+01:00",
+				"url": "https://micro.mjanssen.nl/2023/02/17/metric-metric-live.html"
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2023/02/16/141538.html",
+				
+				"content_html": "<p>😼🐱</p>\n<!-- raw HTML omitted -->\n",
+				"content_text": "😼🐱\n\n<img src=\"uploads/2023/6344f932c5.jpg\" width=\"446\" height=\"600\" alt=\"\">\n",
+				"date_published": "2023-02-16T14:15:38+01:00",
+				"url": "https://micro.mjanssen.nl/2023/02/16/141538.html"
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2023/02/14/ios-development-boot.html",
+				
+				"content_html": "<p>IOS development Boot camp from The Appbrewery with Angela Yu, just a great experience so far.</p>\n",
+				"content_text": "IOS development Boot camp from The Appbrewery with Angela Yu, just a great experience so far. \n\n",
+				"date_published": "2023-02-14T21:17:37+01:00",
+				"url": "https://micro.mjanssen.nl/2023/02/14/ios-development-boot.html"
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2023/02/12/trying-to-pick.html",
 				
 				"content_html": "<p>Trying to pick up iOS development (again).\n<a href=\"https://www.udemy.com/share/101WsW3@e7BMYClIOyEDRtdcTaSKzlAEmocQfMLon7g2IvhUwLhC6-zjBo8Z_uW847PzrFFr/\">www.udemy.com/share/101&hellip;</a></p>\n",
@@ -18,7 +50,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/12/the-starlink-test.html",
 				
 				"content_html": "<p>The Starlink test went well. Speeds up to 150mb/s. 📡🛰️</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "The Starlink test went well. Speeds up to 150mb/s. 📡🛰️\n\n<img src=\"uploads/2023/8bd2bff001.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
+				"content_text": "The Starlink test went well. Speeds up to 150mb/s. 📡🛰️\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/8bd2bff001.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
 				"date_published": "2023-02-12T15:30:41+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/12/the-starlink-test.html"
 			},
@@ -34,7 +66,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/12/metric-on-the.html",
 				
 				"content_html": "<p>Metric 🎶</p>\n<blockquote>\n<p>On the Sly <a href=\"https://songwhip.com/metric/on-the-sly\">songwhip.com/metric/on&hellip;</a></p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Metric 🎶\n\n> On the Sly [songwhip.com/metric/on...](https://songwhip.com/metric/on-the-sly)\n\n<img src=\"uploads/2023/6efecd5729.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Metric 🎶\n\n> On the Sly [songwhip.com/metric/on...](https://songwhip.com/metric/on-the-sly)\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/6efecd5729.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-12T09:43:33+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/12/metric-on-the.html"
 			},
