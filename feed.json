@@ -7,6 +7,14 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2023/03/18/stretching-my-wings.html",
+				
+				"content_html": "<p>Stretching my wings with swift and so development on ios.</p>\n<p>I enjoy it very much. Trying to get a game alive.</p>\n<p>It comes with ups and downs. But there is always a solution around the corner.</p>\n<p>Checking your code and ideas in a playground, does wonders. 🙌🤞</p>\n",
+				"content_text": "Stretching my wings with swift and so development on ios. \n\nI enjoy it very much. Trying to get a game alive. \n\nIt comes with ups and downs. But there is always a solution around the corner. \n\nChecking your code and ideas in a playground, does wonders. 🙌🤞\n",
+				"date_published": "2023-03-18T09:40:36+01:00",
+				"url": "https://micro.mjanssen.nl/2023/03/18/stretching-my-wings.html"
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2023/02/26/went-to-a.html",
 				
 				"content_html": "<p>Went to a man called Otto with Tom Hanks.</p>\n<p>One question.</p>\n<p>Why are movies with Tom Hanks always spot on?? 🎥🎬</p>\n",
@@ -58,7 +66,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/12/the-starlink-test.html",
 				
 				"content_html": "<p>The Starlink test went well. Speeds up to 150mb/s. 📡🛰️</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "The Starlink test went well. Speeds up to 150mb/s. 📡🛰️\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/8bd2bff001.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
+				"content_text": "The Starlink test went well. Speeds up to 150mb/s. 📡🛰️\n\n<img src=\"uploads/2023/8bd2bff001.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
 				"date_published": "2023-02-12T15:30:41+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/12/the-starlink-test.html"
 			},
@@ -74,7 +82,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/12/metric-on-the.html",
 				
 				"content_html": "<p>Metric 🎶</p>\n<blockquote>\n<p>On the Sly <a href=\"https://songwhip.com/metric/on-the-sly\">songwhip.com/metric/on&hellip;</a></p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Metric 🎶\n\n> On the Sly [songwhip.com/metric/on...](https://songwhip.com/metric/on-the-sly)\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/6efecd5729.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Metric 🎶\n\n> On the Sly [songwhip.com/metric/on...](https://songwhip.com/metric/on-the-sly)\n\n<img src=\"uploads/2023/6efecd5729.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-12T09:43:33+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/12/metric-on-the.html"
 			},
@@ -145,7 +153,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/11/metric-last-one.html",
 				
 				"content_html": "<p>Metric. 🎶 (last one I promise)</p>\n<blockquote>\n<p>Now or Never Now <a href=\"https://songwhip.com/metric/now-or-never-now\">songwhip.com/metric/no&hellip;</a></p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Metric. 🎶 (last one I promise)\n\n> Now or Never Now [songwhip.com/metric/no...](https://songwhip.com/metric/now-or-never-now)\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/91e21eca8b.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Metric. 🎶 (last one I promise)\n\n> Now or Never Now [songwhip.com/metric/no...](https://songwhip.com/metric/now-or-never-now)\n\n<img src=\"uploads/2023/91e21eca8b.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-11T14:38:48+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/11/metric-last-one.html"
 			},
@@ -161,7 +169,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/11/metric-help-im.html",
 				
 				"content_html": "<p>Metric. Help I&rsquo;m alive. 🎶</p>\n<blockquote>\n<p>Help I&rsquo;m Alive <a href=\"https://songwhip.com/metric/help-im-alive\">songwhip.com/metric/he&hellip;</a></p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Metric. Help I'm alive. 🎶\n\n> Help I'm Alive [songwhip.com/metric/he...](https://songwhip.com/metric/help-im-alive)\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/64b5716e66.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Metric. Help I'm alive. 🎶\n\n> Help I'm Alive [songwhip.com/metric/he...](https://songwhip.com/metric/help-im-alive)\n\n<img src=\"uploads/2023/64b5716e66.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-11T14:04:21+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/11/metric-help-im.html"
 			},
@@ -357,7 +365,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/08/tonight-we-saw.html",
 				
 				"content_html": "<p>Tonight we saw The Dire Straits. Mark Knopfler changed a little bit and had developed an Italian accent. But the rest just like the real band.</p>\n<p>They call themselves Brothers in Band. 🎶🎵</p>\n<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>\n",
-				"content_text": "Tonight we saw The Dire Straits. Mark Knopfler changed a little bit and had developed an Italian accent. But the rest just like the real band. \n\nThey call themselves Brothers in Band. 🎶🎵\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/92a9098583.jpg\" width=\"600\" height=\"450\" alt=\"\"><img src=\"https://micro.mjanssen.nl/uploads/2023/a494684422.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
+				"content_text": "Tonight we saw The Dire Straits. Mark Knopfler changed a little bit and had developed an Italian accent. But the rest just like the real band. \n\nThey call themselves Brothers in Band. 🎶🎵\n\n<img src=\"uploads/2023/92a9098583.jpg\" width=\"600\" height=\"450\" alt=\"\"><img src=\"uploads/2023/a494684422.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
 				"date_published": "2023-02-08T23:33:19+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/08/tonight-we-saw.html"
 			},
@@ -365,7 +373,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/07/also-a-nice.html",
 				
 				"content_html": "<p>Also a nice track by Metric 🎶</p>\n<blockquote>\n<p>Now or Never Now <a href=\"https://songwhip.com/metric/now-or-never-now\">songwhip.com/metric/no&hellip;</a></p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Also a nice track by Metric 🎶\n\n> Now or Never Now [songwhip.com/metric/no...](https://songwhip.com/metric/now-or-never-now)\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/d690ada9f0.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Also a nice track by Metric 🎶\n\n> Now or Never Now [songwhip.com/metric/no...](https://songwhip.com/metric/now-or-never-now)\n\n<img src=\"uploads/2023/d690ada9f0.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-07T20:19:01+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/07/also-a-nice.html"
 			},
@@ -373,7 +381,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/07/have-a-listen.html",
 				
 				"content_html": "<p>Have a listen 🎶</p>\n<blockquote>\n<p>All Comes Crashing <a href=\"https://songwhip.com/metric/all-comes-crashing\">songwhip.com/metric/al&hellip;</a></p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Have a listen 🎶\n\n> All Comes Crashing [songwhip.com/metric/al...](https://songwhip.com/metric/all-comes-crashing)\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/65d5e12a8e.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Have a listen 🎶\n\n> All Comes Crashing [songwhip.com/metric/al...](https://songwhip.com/metric/all-comes-crashing)\n\n<img src=\"uploads/2023/65d5e12a8e.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-07T20:15:23+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/07/have-a-listen.html"
 			},
@@ -381,7 +389,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/07/the-setlist-metric.html",
 				
 				"content_html": "<p>The setlist Metric - Doomscroller Tour 2023</p>\n<p>Metric Ronda Tivoli Utrecht 06-02-2023</p>\n<p><a href=\"https://open.spotify.com/playlist/6WZ5EtufyFDjUgW9LhdF4H?si=c3db0bbf719a4ff3\">open.spotify.com/playlist/&hellip;</a></p>\n<p>🎶</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "The setlist Metric - Doomscroller Tour 2023\r\n\r\nMetric Ronda Tivoli Utrecht 06-02-2023\r\n\r\n\r\n[open.spotify.com/playlist/...](https://open.spotify.com/playlist/6WZ5EtufyFDjUgW9LhdF4H?si=c3db0bbf719a4ff3)\r\n\r\n🎶\r\n\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/4a5c14c935.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
+				"content_text": "The setlist Metric - Doomscroller Tour 2023\r\n\r\nMetric Ronda Tivoli Utrecht 06-02-2023\r\n\r\n\r\n[open.spotify.com/playlist/...](https://open.spotify.com/playlist/6WZ5EtufyFDjUgW9LhdF4H?si=c3db0bbf719a4ff3)\r\n\r\n🎶\r\n\n\n<img src=\"uploads/2023/4a5c14c935.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
 				"date_published": "2023-02-07T13:25:37+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/07/the-setlist-metric.html"
 			},
@@ -389,7 +397,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/06/what-a-great.html",
 				
 				"content_html": "<p>What a great gig #Metric #Utrecht #tivoli.</p>\n<p>Emily Haines as energetic as always. Like a deer running around the stage.\n🎶</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "What a great gig #Metric #Utrecht #tivoli. \n\nEmily Haines as energetic as always. Like a deer running around the stage. \n🎶\n\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/208297829b.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "What a great gig #Metric #Utrecht #tivoli. \n\nEmily Haines as energetic as always. Like a deer running around the stage. \n🎶\n\n\n<img src=\"uploads/2023/208297829b.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-06T22:59:15+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/06/what-a-great.html"
 			},
@@ -453,7 +461,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/04/not-belgian-but.html",
 				
 				"content_html": "<p>Not Belgian but good enough. 🍺</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Not Belgian but good enough. 🍺\n\n<img src=\"https://micro.mjanssen.nl/uploads/2023/abc058b9cd.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Not Belgian but good enough. 🍺\n\n<img src=\"uploads/2023/abc058b9cd.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-04T18:25:13+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/04/not-belgian-but.html"
 			},
@@ -461,7 +469,7 @@
 				"id": "http://marc0janssen.micro.blog/2023/02/04/the-difference-jon.html",
 				
 				"content_html": "<p>The Difference - Jon Hopkins Remix🎶</p>\n<p>Jon Hopkins</p>\n<p><a href=\"https://songwhip.com/flume/the-difference-jon-hopkins-remix\">songwhip.com/flume/the&hellip;</a></p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "The Difference - Jon Hopkins Remix🎶\r\n\r\nJon Hopkins \r\n\r\n[songwhip.com/flume/the...](https://songwhip.com/flume/the-difference-jon-hopkins-remix)\r\n\r\n<img src=\"https://micro.mjanssen.nl/uploads/2023/ccbdff3312.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "The Difference - Jon Hopkins Remix🎶\r\n\r\nJon Hopkins \r\n\r\n[songwhip.com/flume/the...](https://songwhip.com/flume/the-difference-jon-hopkins-remix)\r\n\r\n<img src=\"uploads/2023/ccbdff3312.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2023-02-04T12:57:50+01:00",
 				"url": "https://micro.mjanssen.nl/2023/02/04/the-difference-jon.html"
 			},
