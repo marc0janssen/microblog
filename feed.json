@@ -7,6 +7,14 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2023/04/23/beta-test-for.html",
+				
+				"content_html": "<p>BETA test for a dice game called Zanzibar on iOS iPhone.</p>\n<p>Maybe you like to give it a spin.</p>\n<p><a href=\"https://testflight.apple.com/join/EKMCzgjd\">testflight.apple.com/join/EKMC&hellip;</a></p>\n",
+				"content_text": "BETA test for a dice game called Zanzibar on iOS iPhone. \n\nMaybe you like to give it a spin. \n\n[testflight.apple.com/join/EKMC...](https://testflight.apple.com/join/EKMCzgjd)\n",
+				"date_published": "2023-04-23T20:03:57+02:00",
+				"url": "https://micro.mjanssen.nl/2023/04/23/beta-test-for.html"
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2023/04/22/metric-now-or.html",
 				
 				"content_html": "<p>Metric 🇨🇦 🎶</p>\n<p>Now or Never Now <a href=\"https://songwhip.com/metric/now-or-never-now\">songwhip.com/metric/no&hellip;</a></p>\n",
