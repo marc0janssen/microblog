@@ -25,6 +25,98 @@
 	  <div class="h-entry">
 		
 
+		<a href="https://micro.mjanssen.nl/2025/03/18/statue-in-the-austrian-national.html" class="u-url"><time class="dt-published" datetime="2025-03-18 18:43:08 &#43;0100">Mar 18, 2025</time></a>
+
+		<div class="e-content">
+			 <p>Statue in the Austrian National Library, Vienna.</p>
+<p><img src="https://micro.mjanssen.nl/uploads/2025/image-20250318-184304-ae4ad26d.jpg" alt="Statue in the Austrian National Library, Vienna. "></p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/17/the-missus-took-me-on.html" class="u-url"><time class="dt-published" datetime="2025-03-17 11:46:30 &#43;0100">Mar 17, 2025</time></a>
+
+		<div class="e-content">
+			 <p>The missus took me on a weekend to Vienna. It is a very nice city. We stayed at the Schönbrunn Hotel. Visited some lovely places. Like an very old library and the Spanish riding school. Did some nice walks and stopped at some nice places to eat. 📷 ✈</p>
+<p><img src="https://micro.mjanssen.nl/uploads/2025/image-20250317-114626-d97fd127.jpg" alt="White horse jumping with rider at the Spanish riding school in Vienna. "></p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/16/how-can-i-add-people.html" class="u-url"><time class="dt-published" datetime="2025-03-16 09:10:51 &#43;0100">Mar 16, 2025</time></a>
+
+		<div class="e-content">
+			 <p>How can I add people from Bluesky to micro.blog??</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/15/goed-weekend-allemaal-hopelijk-leuk.html" class="u-url"><time class="dt-published" datetime="2025-03-15 08:27:59 &#43;0100">Mar 15, 2025</time></a>
+
+		<div class="e-content">
+			 <p>Goed weekend allemaal. Hopelijk leuk vermaak in het weekend voor iedereen.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://micro.mjanssen.nl/2025/03/13/renaming-noteplan-files-with-the.html">📝Renaming Noteplan files with the correct title</a></h1>
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/13/renaming-noteplan-files-with-the.html" class="u-url"><time class="dt-published" datetime="2025-03-13 18:22:04 &#43;0100">Mar 13, 2025</time></a>
+
+		<div class="e-content">
+			 <p>A great feature in Noteplan is that the filename of the note gets the filename that is equal to the title of the note</p>
+<p>What is not so great, as a note evolves and changes and maybe your title gets changed, the filename does not. Which can be a hassle if you do a files search on your disk to find a particular file. I recently learned that you can work together with Obsidian. But for this to work correctly, the files need to have nice describing names.</p>
+<p>I don’t use Obsidian, but I like to have my filenames aligned with the notes’ title. Therefore, I wrote the bash script below.</p>
+<p>You can set your directories to be scanned, so that the files within them get renamed if needed.</p>
+<pre><code>#!/bin/bash
+
+# Directories to process
+directories=(
+  &quot;/Users/&lt;user&gt;/Library/Containers/co.noteplan.NotePlan-setapp/Data/Library/Application Support/co.noteplan.NotePlan-setapp/Notes/personal&quot;
+  &quot;/Users/&lt;user&gt;/Library/Containers/co.noteplan.NotePlan-setapp/Data/Library/Application Support/co.noteplan.NotePlan-setapp/Notes/work&quot;
+)
+
+# Loop through directories and *.txt files
+for root_dir in &quot;${directories[@]}&quot;; do
+  echo
+  echo
+  echo &quot;Processing directory: $root_dir&quot;
+  # Find and process *.txt files
+  find &quot;$root_dir&quot; -name &quot;*.txt&quot; -type f -print0 | while IFS= read -r -d '' file; do
+
+  title=$(head -n 1 &quot;$file&quot; | tr -cd '[:alnum:][:space:]._-' | xargs)
+    path=$(dirname &quot;$file&quot;)
+    new_filename=&quot;${path}/${title}.txt&quot;
+    
+    if [[ &quot;$file&quot; != &quot;$new_filename&quot; ]]; then
+      mv &quot;$file&quot; &quot;$new_filename&quot;
+      echo &quot;File renamed to: $new_filename&quot;
+    else
+      echo &quot;File already has correct title: $new_filename&quot;
+    fi
+  done
+done
+</code></pre>
+<p>I have Noteplan via Setapp, so I included the Setapp paths to be used. Set &lt;user&gt; to your username and mutate the path, so it resembled your folder structure in Noteplan. 📝🖋️☕️</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
 		<a href="https://micro.mjanssen.nl/2025/03/10/commuting-back-home-lovely-sun.html" class="u-url"><time class="dt-published" datetime="2025-03-10 15:52:26 &#43;0100">Mar 10, 2025</time></a>
 
 		<div class="e-content">
@@ -668,52 +760,6 @@ while True:
 	
 	  <div class="h-entry">
 		
-			<h1><a href="https://micro.mjanssen.nl/2024/12/07/renaming-noteplan-files.html">📝Renaming Noteplan files with the correct titles</a></h1>
-		
-
-		<a href="https://micro.mjanssen.nl/2024/12/07/renaming-noteplan-files.html" class="u-url"><time class="dt-published" datetime="2024-12-07 09:06:04 &#43;0100">Dec 7, 2024</time></a>
-
-		<div class="e-content">
-			 <p>A great feature in Noteplan is that the filename of the note gets the filename that is equal to the title of the note</p>
-<p>What is not so great, as a note evolves and changes and maybe your title gets changed, the filename does not. Which can be a hassle if you do a files search on your disk to find a particular file. I recently learned that you can work together with Obsidian. But for this to work correctly, the files need to have nice describing names.</p>
-<p>I don’t use Obsidian, but I like to have my filenames aligned with the notes’ title. Therefore, I wrote the bash script below.</p>
-<p>You can set your directories to be scanned, so that the files within them get renamed if needed.</p>
-<pre><code>#!/bin/bash
-
-# Directories to process
-directories=(
-  &quot;/Users/&lt;user&gt;/Library/Containers/co.noteplan.NotePlan-setapp/Data/Library/Application Support/co.noteplan.NotePlan-setapp/Notes/personal&quot;
-  &quot;/Users/&lt;user&gt;/Library/Containers/co.noteplan.NotePlan-setapp/Data/Library/Application Support/co.noteplan.NotePlan-setapp/Notes/work&quot;
-)
-
-# Loop through directories and *.txt files
-for root_dir in &quot;${directories[@]}&quot;; do
-  echo
-  echo
-  echo &quot;Processing directory: $root_dir&quot;
-  # Find and process *.txt files
-  find &quot;$root_dir&quot; -name &quot;*.txt&quot; -type f -print0 | while IFS= read -r -d '' file; do
-
-  title=$(head -n 1 &quot;$file&quot; | tr -cd '[:alnum:][:space:]._-' | xargs)
-    path=$(dirname &quot;$file&quot;)
-    new_filename=&quot;${path}/${title}.txt&quot;
-    
-    if [[ &quot;$file&quot; != &quot;$new_filename&quot; ]]; then
-      mv &quot;$file&quot; &quot;$new_filename&quot;
-      echo &quot;File renamed to: $new_filename&quot;
-    else
-      echo &quot;File already has correct title: $new_filename&quot;
-    fi
-  done
-done
-</code></pre>
-<p>I have Noteplan via Setapp, so I included the Setapp paths to be used. Set &lt;user&gt; to your username and mutate the path, so it resembled your folder structure in Noteplan. 📝🖋️☕️</p>
-
-		</div>
-	  </div>
-	
-	  <div class="h-entry">
-		
 			<h1><a href="https://micro.mjanssen.nl/2024/12/07/how-do-you.html">📟How do you find the RSS Feed of a website (if it exists)</a></h1>
 		
 
@@ -758,11 +804,7 @@ done
 		<a href="https://micro.mjanssen.nl/2024/12/07/how-i-brought.html" class="u-url"><time class="dt-published" datetime="2024-12-07 09:00:47 &#43;0100">Dec 7, 2024</time></a>
 
 		<div class="e-content">
-			 <p>
-    <button class="tinylytics_kudos" data-path="/2024/12/07/how-i-brought.html"></button>
-
-    <span class="tinylytics_hits" data-path="/2024/12/07/how-i-brought.html"></span></p>
-<h2 id="summary">Summary</h2>
+			 <h2 id="summary">Summary</h2>
 <p>I have been exploring different methods to enhance my productivity and note-taking system. Additionally, I am striving to establish organization within my personal archives stored on my Synology device. During my research, I came across the following methodologies: <a href="https://johnnydecimal.com" title="Johnny Decimal">Johnny Decimal</a>, <a href="https://zettelkasten.de/introduction/" title="Zettelkasten">Zettelkasten</a>, <a href="https://www.buildingasecondbrain.com/para" title="PARA">PARA</a> and the <a href="https://www.buildingasecondbrain.com" title="BASB">Build A Second Brain</a> approach.</p>
 <p>My objective is to integrate these four methods in a way that enables me to:</p>
 <ol>
@@ -846,7 +888,6 @@ done
 </blockquote>
 <p>They exactly where to find this folder and it’s content. It’s all locked in side those numbers. Easi-Peasi! And you can do this in apps too. Say for instance in Things3 or like in the image blow in an app called Noteplan3 where I keep all my text-notes for stuff I find interesting.</p>
 <p><img src="https://micro.mjanssen.nl/uploads/2024/noteplan-example.png" alt=""></p>
-<p>📝✏️</p>
 
 		</div>
 	  </div>
