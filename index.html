@@ -25,10 +25,356 @@
 	  <div class="h-entry">
 		
 
+		<a href="https://micro.mjanssen.nl/2025/03/20/does-anyone-know-if-there.html" class="u-url"><time class="dt-published" datetime="2025-03-20 15:46:11 &#43;0100">Mar 20, 2025</time></a>
+
+		<div class="e-content">
+			 <p>Does anyone know if there is a good alternative to Dropbox on the European continent?</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/20/last-day-of-the-week.html" class="u-url"><time class="dt-published" datetime="2025-03-20 08:51:16 &#43;0100">Mar 20, 2025</time></a>
+
+		<div class="e-content">
+			 <p>☀️Last day of the week&hellip;. A nice workout on the end of the day&hellip;. Hello weekend, here I come&hellip;..</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://micro.mjanssen.nl/2025/03/19/setting-up-wireguard-on-your.html">🛜Setting up Wireguard on Your Ubiquiti Edge Router</a></h1>
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/19/setting-up-wireguard-on-your.html" class="u-url"><time class="dt-published" datetime="2025-03-19 22:50:16 &#43;0100">Mar 19, 2025</time></a>
+
+		<div class="e-content">
+			 <p>I aimed to create a VPN router using my Ubiquiti Edge Router ER-12 and utilise the configuration files from NordVPN. Initially, I attempted this with OpenVPN configuration files, which worked flawlessly, but unfortunately, OpenVPN resulted in poor throughput. (I have written another blog post about setting this up with OpenVPN if you need it, but I recommend using WireGuard instead.)</p>
+<p>NordVPN&rsquo;s implementation of WireGuard is known as NordLynx. However, NordVPN does not make these profiles easily accessible like Mullvad VPN does. On the NordVPN website, only OpenVPN configurations are readily available for download.</p>
+<p>To obtain the NordLynx configuration files, I discovered two methods online.</p>
+<ol>
+<li>One approach is to use the method described by Daniel Rosenberg. You can find more details in his article on using WireGuard with NordVPN on an EdgeRouter <a href="https://medium.com/@daniel-rosenberg/how-to-selectively-tunnel-an-apple-tv-or-whatever-via-nordvpn-over-wireguard-using-an-edgerouter-df77a8afcac2" title="The Daniel Rosenberg Method">here</a>.</li>
+<li>The other method I found is a more practical solution from “MyShittyCode”, which provides a straightforward script to extract WireGuard configurations. You can read about it <a href="https://myshittycode.com/2024/06/08/nordvpn-extracting-wireguard-configuration/" title="The MyShityCode Method">here</a>.</li>
+</ol>
+<p>I initially used the Daniel Rosenberg method in a Linux VM on my MacBook, which worked, but after discovering the second option from MyShittyCode, I found their script to be quite useful and decided to modify it slightly, as you can see below.</p>
+<p>The primary step in the MyShittyCode method involves setting up NordVPN to generate an ACCESS TOKEN for use in the script. This is relatively straightforward; simply follow the steps outlined in <a href="https://myshittycode.com/2024/06/08/nordvpn-extracting-wireguard-configuration/" title="The MyShittyCode Method">the original blog post</a>.</p>
+<p><strong>What You Need to Set in the Script</strong></p>
+<p>To use the script, you need to configure the following variables:</p>
+<pre><code># --- Configuration Variables ---
+ACCESS_TOKEN=&quot;**YOUR TOKEN HERE!!**&quot;
+TOTAL_CONFIGS=1
+DNS_SERVER=&quot;103.86.96.100&quot;
+COUNTRY_NAME=&quot;Netherlands&quot;
+</code></pre>
+<ul>
+<li>ACCESS_TOKEN: This can be obtained by following the steps in the original post.</li>
+<li>TOTAL_CONFIGS: You can set this to any number of configurations you wish to generate.</li>
+<li>DNS_SERVER: You can use any DNS server, but to avoid DNS leak complaints from NordVPN, use 103.86.96.100 or 103.86.99.100.</li>
+<li>COUNTRY_NAME: Set this to any country where NordVPN has endpoints; you might prefer to use your current location.</li>
+</ul>
+<pre tabindex="0"><code>	#!/usr/bin/env bash
+	
+	# NordVPN WireGuard Configuration Generator
+	# Checks prerequisites and generates WireGuard configuration files.
+	
+	# --- Configuration Variables ---
+	ACCESS_TOKEN=&quot;&lt;&lt;YOUR TOKEN HERE!!&gt;&gt;&quot;
+	TOTAL_CONFIGS=1
+	DNS_SERVER=&quot;103.86.96.100&quot;
+	COUNTRY_NAME=&quot;Netherlands&quot;
+	
+	# --- Functions for Prerequisite Checks ---
+	check_command() {
+	  if ! command -v &quot;$1&quot; &gt;/dev/null 2&gt;&amp;1; then
+	    echo &quot;❌ ERROR: Required command '$1' is not installed.&quot;
+	    MISSING_DEPENDENCIES=true
+	  else
+	    echo &quot;✅ '$1' is installed.&quot;
+	  fi
+	}
+	
+	check_internet_connection() {
+	  if ! curl -s --head https://api.nordvpn.com &gt;/dev/null; then
+	    echo &quot;❌ ERROR: Unable to connect to NordVPN API. Please check your internet connection.&quot;
+	    exit 1
+	  else
+	    echo &quot;✅ Internet connection is working.&quot;
+	  fi
+	}
+	
+	check_access_token() {
+	  RESPONSE=$(curl -s -u token:&quot;$ACCESS_TOKEN&quot; &quot;https://api.nordvpn.com/v1/users/services/credentials&quot;)
+	  if [[ $(echo &quot;$RESPONSE&quot; | jq -r '.nordlynx_private_key') == &quot;null&quot; ]]; then
+	    echo &quot;❌ ERROR: Invalid or expired ACCESS_TOKEN.&quot;
+	    exit 1
+	  else
+	    echo &quot;✅ ACCESS_TOKEN is valid.&quot;
+	  fi
+	}
+	
+	# --- Perform Prerequisite Checks ---
+	echo &quot;🔍 Checking prerequisites...&quot;
+	MISSING_DEPENDENCIES=false
+	
+	check_command curl
+	check_command jq
+	
+	if [ &quot;$MISSING_DEPENDENCIES&quot; = true ]; then
+	  echo &quot;🚨 Please install the missing dependencies before running this script again.&quot;
+	  exit 1
+	fi
+	
+	check_internet_connection
+	check_access_token
+	
+	echo &quot;🚀 All prerequisites satisfied. Proceeding...&quot;
+	
+	# --- Fetch Country ID ---
+	COUNTRY_ID=$(curl -s &quot;https://api.nordvpn.com/v1/servers/countries&quot; | \
+	jq -r &quot;.[] | select(.name==\&quot;$COUNTRY_NAME\&quot;) | .id&quot;)
+	
+	if [ -z &quot;$COUNTRY_ID&quot; ]; then
+	  echo &quot;❌ ERROR: Country '$COUNTRY_NAME' not found or invalid.&quot;
+	  exit 1
+	fi
+	
+	# --- Fetch Private Key ---
+	PRIVATE_KEY=$(curl -s -u token:&quot;$ACCESS_TOKEN&quot; \
+	&quot;https://api.nordvpn.com/v1/users/services/credentials&quot; | jq -r '.nordlynx_private_key')
+	
+	# --- Fetch Recommended Servers and Generate Configurations ---
+	SERVER_RECOMMENDATIONS_URL=&quot;https://api.nordvpn.com/v1/servers/recommendations?&amp;filters\[country_id\]=$COUNTRY_ID&amp;filters\[servers_technologies\]\[identifier\]=wireguard_udp&amp;limit=$TOTAL_CONFIGS&quot;
+	
+	curl -s &quot;$SERVER_RECOMMENDATIONS_URL&quot; | jq -r --arg private_key &quot;$PRIVATE_KEY&quot; --arg dns &quot;$DNS_SERVER&quot; '
+	.[] |
+	{
+	  filename: (.locations[0].country.name + &quot; - &quot; + .locations[0].country.city.name + &quot; - &quot; + .hostname + &quot;.conf&quot;),
+	  ip: .station,
+	  publicKey: (.technologies[] | select(.identifier==&quot;wireguard_udp&quot;) | .metadata[] | select(.name==&quot;public_key&quot;).value)
+	} |
+	{
+	  filename: .filename,
+	  config: [
+	    &quot;# &quot; + .filename,
+	    &quot;&quot;,
+	    &quot;[Interface]&quot;,
+	    &quot;PrivateKey = \($private_key)&quot;,
+	    &quot;Address = 10.5.0.2/32&quot;,
+	    &quot;DNS = \($dns)&quot;,
+	    &quot;&quot;,
+	    &quot;[Peer]&quot;,
+	    &quot;PublicKey = &quot; + .publicKey,
+	    &quot;AllowedIPs = 0.0.0.0/0, ::/0&quot;,
+	    &quot;Endpoint = &quot; + .ip + &quot;:51820&quot;
+	  ] | join(&quot;\n&quot;)
+	} |
+	&quot;echo \&quot;&quot; + .config + &quot;\&quot; &gt; \&quot;&quot; + .filename + &quot;\&quot;&quot;
+	' | sh
+	
+	echo &quot;🎉 WireGuard configuration file(s) successfully generated!&quot;
+</code></pre><p><strong>Running the Script</strong></p>
+<p>When you run the script, you should see a smooth output like this:</p>
+<pre><code>✅ 'curl' is installed.
+✅ 'jq' is installed.
+✅ Internet connection is working.
+✅ ACCESS_TOKEN is valid.
+🚀 All prerequisites satisfied. Proceeding...
+🎉 WireGuard configuration file(s) successfully generated! 
+</code></pre>
+<p>You will find one or more configuration files generated, depending on your settings, similar to this:</p>
+<pre><code>-rw-rw-r-- 1 admin admin  290 Mar 19 20:58 'Netherlands - Amsterdam - nl729.nordvpn.com.conf' 
+</code></pre>
+<p>The content of the file will resemble the following:</p>
+<pre><code># Netherlands - Amsterdam - nl729.nordvpn.com.conf
+
+[Interface]
+PrivateKey = ** YOUR_PRIVATE_KEY_HERE **
+Address = 10.5.0.2/32
+DNS = 103.86.96.100
+
+[Peer]
+PublicKey = ** YOUR_PUBLIC_KEY_HERE **
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = 213.232.87.204:51820
+</code></pre>
+<p><strong>Installing Wireguard package on your Edgerouter</strong></p>
+<p>The EdgeRouter does not come with WireGuard pre-installed. You will need to install it manually. There is a <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt?source=post_page-----df77a8afcac2---------------------------------------" title="Package library">helpful individual on GitHub</a>  who maintains the WireGuard packages for EdgeOS. You can find the current release <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt/releases" title="Current release">here</a>.</p>
+<p>For my router, the ER-12, the correct package can be found <a href="https://github.com/WireGuard/wireguard-vyatta-ubnt/releases/download/1.0.20220627-1/e300-v2-v1.0.20220627-v1.0.20210914.deb" title="Wireguard package Edgerouter ER-12">here</a>.
+Now, open an SSH session to your Edge router and enter the following commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -OL https://github.com/WireGuard/wireguard-vyatta-ubnt/releases/download/1.0.20211208-1/e300-v2-v1.0.20220627-v1.0.20210914.deb
+
+sudo dpkg -i e300-v2-v1.0.20220627-v1.0.20210914.deb
+</code></pre></div><ul>
+<li>The <code>curl</code> command will download the required package onto the router. Ensure you download the correct one; in my case, it is <code>e300-v2-v1.0.20220627-v1.0.20210914.deb</code>.</li>
+<li>The <code>dpkg</code> command will install the package on the router.</li>
+</ul>
+<p><strong>After Obtaining the Configuration Files and package installation</strong></p>
+<p>Once you have obtained the configuration files and installed the package, you are ready to proceed with the next step: setting up your Edge Router with a VPN connection.</p>
+<p><strong>Setting up your Edge Router with a VPN connection</strong></p>
+<p>The script below is an EdgeOS script designed to set up your VPN tunnel for your home LAN. In the example below, it is assumed that you have VLANs and that VLAN30 is the network for all clients that need to be routed through the WireGuard tunnel wg0.</p>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>VLAN30 is configured with the IP range 192.168.30.0/24.</li>
+<li>You wish to exclude nodes 192.168.30.50, 192.168.30.51, and 192.168.30.52 from the tunnel (for example, these might be RING.COM devices that experience issues with VPNs).</li>
+<li>You need to exclude nodes 104.17.127.1 (Ring oath1) and 104.17.128.1 (Ring oath2) for clients that use the wg0 tunnel. This is necessary for clients that require access to RING.COM apps, as RING.COM does not support VPNs.</li>
+<li>You want to exclude subnets within RFC1918 in the wg0 VPN tunnel.</li>
+<li>You aim to exclude email services from Apple and Google, as they often have issues with VPNs.</li>
+</ul>
+<p><strong>Note: Ensure you set your Private Key and Public Key in the script below, which can be found in the configuration file named “Netherlands - Amsterdam - nl729.nordvpn.com.conf”.</strong></p>
+<p><strong>Note: Set the correct IP address below, found in the same configuration file. In this example, the IP address is 213.232.87.204</strong></p>
+<pre><code>configure
+
+# Wireguard configuration
+set interfaces wireguard wg0 address 10.5.0.2/32
+set interfaces wireguard wg0 description 'NordVPN Wireguard'
+set interfaces wireguard wg0 listen-port 37728
+set interfaces wireguard wg0 mtu 1420
+set interfaces wireguard wg0 peer YOUR_PUBLIC_KEY_HERE allowed-ips 0.0.0.0/0
+set interfaces wireguard wg0 peer YOUR_PUBLIC_KEY_HERE description nl729.nordvpn.com.conf
+set interfaces wireguard wg0 peer YOUR_PUBLIC_KEY_HERE endpoint 213.232.87.204:51820
+set interfaces wireguard wg0 peer YOUR_PUBLIC_KEY_HERE persistent-keepalive 25
+set interfaces wireguard wg0 private-key YOUR_PRIVATE_KEY_HERE
+set interfaces wireguard wg0 route-allowed-ips false
+commit
+
+
+# NAT-rule for traffic from 192.168.30.0/24 to VPN-tunnel
+set service nat rule 5020 description 'masquerade for wg0/NordVPN'
+set service nat rule 5020 log disable
+set service nat rule 5020 outbound-interface wg0
+set service nat rule 5020 protocol all
+set service nat rule 5020 type masquerade
+commit
+
+# Allow incoming WireGuard protocol traffic on the WAN
+set firewall name WAN_LOCAL rule 15 action accept
+set firewall name WAN_LOCAL rule 15 description 'Allow incoming WireGuard'
+set firewall name WAN_LOCAL rule 15 destination port 37728
+set firewall name WAN_LOCAL rule 15 protocol udp
+commit
+
+# Static route for traffic from 192.168.30.0/24 via de VPN-tunnel
+set protocols static table 1 description 'Route out via wg0/NordVPN'
+set protocols static table 1 interface-route 0.0.0.0/0 next-hop-interface wg0
+set protocols static table 1 route 0.0.0.0/0 blackhole distance 255
+commit
+
+# Hosts in 192.168.30.0/24 we don't want through wg0/NordVPN 
+set firewall group address-group Vlan30_Hosts_NordVPN_EXCLUDE description 'Hosts in VLAN30 we dont want through wg0/NordVPN'
+set firewall group address-group Vlan30_Hosts_NordVPN_EXCLUDE address 192.168.30.50	# host50
+set firewall group address-group Vlan30_Hosts_NordVPN_EXCLUDE address 192.168.30.51 # host51
+set firewall group address-group Vlan30_Hosts_NordVPN_EXCLUDE address 192.168.30.52 # host52
+commit
+
+# Sites on the Internet we dont want through wg0/NordVPN
+set firewall group address-group Internet_Hosts_NordVPN_EXCLUDE description 'Sites on the Internet we dont want through wg0/NordVPN'
+set firewall group address-group Internet_Hosts_NordVPN_EXCLUDE address 104.17.127.1 # Ring oath1
+set firewall group address-group Internet_Hosts_NordVPN_EXCLUDE address 104.17.128.1 # Ring oath2
+commit
+
+# None routable subnets 
+set firewall group address-group RFC1918 description 'Allow None routable subnets'
+set firewall group address-group RFC1918 address 192.168.0.0/16
+set firewall group address-group RFC1918 address 172.16.0.0/12
+set firewall group address-group RFC1918 address 10.0.0.0/8
+commit
+
+# Mail ports (spoiler: Apple Mail and Google Mail don't like VPN's) 
+set firewall group port-group Mail_ports description 'Mail poorten'
+set firewall group port-group Mail_ports port 993
+set firewall group port-group Mail_ports port 587
+set firewall group port-group Mail_ports port 465
+set firewall group port-group Mail_ports port 2525  
+commit
+
+# traffic from 192.168.30.0/24 to RFC1918 not via wg0
+set firewall modify SOURCE_ROUTE rule 10 description 'traffic from 192.168.30.0/24 to RFC1918 not via wg0'
+set firewall modify SOURCE_ROUTE rule 10 source address 192.168.30.0/24
+set firewall modify SOURCE_ROUTE rule 10 destination group address-group RFC1918
+set firewall modify SOURCE_ROUTE rule 10 action accept
+
+# traffic from excluded hosts to 0.0.0.0/0 not via wg0
+set firewall modify SOURCE_ROUTE rule 20 description 'traffic from excluded hosts to 0.0.0.0/0 not via wg0'
+set firewall modify SOURCE_ROUTE rule 20 source group address-group Vlan30_Hosts_NordVPN_EXCLUDE
+set firewall modify SOURCE_ROUTE rule 20 destination address 0.0.0.0/0
+set firewall modify SOURCE_ROUTE rule 20 action accept
+
+# traffic for excluded sites on Internet not via wg0
+set firewall modify SOURCE_ROUTE rule 21 description 'traffic for excuded sites on Internet not via wg0'
+set firewall modify SOURCE_ROUTE rule 21 destination group address-group Internet_Hosts_NordVPN_EXCLUDE
+set firewall modify SOURCE_ROUTE rule 21 action accept
+
+# traffic from MAIL ports to 0.0.0.0/0 not via wg0  
+set firewall modify SOURCE_ROUTE rule 30 description 'traffic from MAIL ports to 0.0.0.0/0 not via wg0'  
+set firewall modify SOURCE_ROUTE rule 30 destination group port-group Mail_ports  
+set firewall modify SOURCE_ROUTE rule 30 action accept  
+
+# Firewall rule traffic from 192.168.30.0/24 through wg0
+set firewall modify SOURCE_ROUTE rule 100 description 'traffic from 192.168.30.0/24 through wg0'
+set firewall modify SOURCE_ROUTE rule 100 source address 192.168.30.0/24
+set firewall modify SOURCE_ROUTE rule 100 modify table 1
+
+# Apply firewall-modification to VLAN30
+set interfaces switch switch0 vif 30 firewall in modify SOURCE_ROUTE
+
+commit
+save
+exit
+</code></pre>
+<p>The interface specified in the script can be configured to any interface you need. In this example, it is VLAN30 on switch0, but you can easily use eth2 or any other interface that suits your requirements.</p>
+<pre tabindex="0"><code># Apply firewall-modification to eth2
+set interfaces ethernet eth2 firewall in modify SOURCE_ROUTE
+</code></pre><p>Or If you want it to be applied to your complete switch0</p>
+<pre tabindex="0"><code># Apply firewall-modification to switch0
+set interfaces switch switch0 firewall in modify SOURCE_ROUTE
+</code></pre><p><strong>Disabling a VPN</strong></p>
+<p>To disable a VPN, use the following commands:</p>
+<pre><code>configure
+
+delete interfaces switch switch0 vif 30 firewall in modify SOURCE_ROUTE
+
+commit
+save
+exit
+</code></pre>
+<p><strong>Re-enabling a VPN</strong></p>
+<p>To re-enable a VPN after disabling it, use the following commands:</p>
+<pre><code>configure
+
+set interfaces switch switch0 vif 30 firewall in modify SOURCE_ROUTE
+
+commit
+save
+exit
+</code></pre>
+<p>📝
+
+    <button class="tinylytics_kudos" data-path="/2025/03/19/setting-up-wireguard-on-your.html"></button></p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/19/weer-een-mooie-dag-lekker.html" class="u-url"><time class="dt-published" datetime="2025-03-19 15:34:57 &#43;0100">Mar 19, 2025</time></a>
+
+		<div class="e-content">
+			 <p>Weer een mooie dag&hellip; lekker naar huis&hellip;. kijken of er thuis nog een mooie wandeling gemaakt kan worden met 🙋🏼‍♀️⭐️</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
 		<a href="https://micro.mjanssen.nl/2025/03/18/statue-in-the-austrian-national.html" class="u-url"><time class="dt-published" datetime="2025-03-18 18:43:08 &#43;0100">Mar 18, 2025</time></a>
 
 		<div class="e-content">
-			 <p>Statue in the Austrian National Library, Vienna.</p>
+			 <p>Statue in the Austrian National Library, Vienna. ✈️📷</p>
 <p><img src="https://micro.mjanssen.nl/uploads/2025/image-20250318-184304-ae4ad26d.jpg" alt="Statue in the Austrian National Library, Vienna. "></p>
 
 		</div>
@@ -199,10 +545,7 @@ done
 		<a href="https://micro.mjanssen.nl/2025/03/08/set-up-qos-with-edgeos.html" class="u-url"><time class="dt-published" datetime="2025-03-08 21:55:38 &#43;0100">Mar 8, 2025</time></a>
 
 		<div class="e-content">
-			 <p>
-    <button class="tinylytics_kudos" data-path="/2025/03/08/set-up-qos-with-edgeos.html"></button> 
-    <span class="tinylytics_hits" data-path="/2025/03/08/set-up-qos-with-edgeos.html"></span></p>
-<p>Setting up QOS on a Ubiquiti router with EdgeOS is not very complicated and pretty straightforward. In this post I try to set forth the way to set this up. I will show two ways.</p>
+			 <p>Setting up QOS on a Ubiquiti router with EdgeOS is not very complicated and pretty straightforward. In this post I try to set forth the way to set this up. I will show two ways.</p>
 <ol>
 <li>A configuration with groups, which is slower but better manageable</li>
 <li>A configuration without groups, which is faster giving a higher throughput</li>
@@ -378,6 +721,8 @@ exit
 </code></pre>
 <p>📝🎮📺</p>
 
+    <button class="tinylytics_kudos" data-path="/2025/03/08/set-up-qos-with-edgeos.html"></button>
+
 		</div>
 	  </div>
 	
@@ -490,11 +835,7 @@ The Stone Roses</p>
 		<a href="https://micro.mjanssen.nl/2024/12/07/getting-your-emby.html" class="u-url"><time class="dt-published" datetime="2024-12-07 09:24:17 &#43;0100">Dec 7, 2024</time></a>
 
 		<div class="e-content">
-			 <p>
-    <button class="tinylytics_kudos" data-path="/2024/12/07/getting-your-emby.html"></button>
-
-    <span class="tinylytics_hits" data-path="/2024/12/07/getting-your-emby.html"></span></p>
-<p>Running Emby en Radarr/Sonarr on different servers or in different container can be a pain in the ass to get your content scanned.</p>
+			 <p>Running Emby en Radarr/Sonarr on different servers or in different container can be a pain in the ass to get your content scanned.</p>
 <p>But it is much easier than you think if you know what’s going on inside the services. The TL;DR is <strong>keep your content path the same in EMBY and in Sonarr/Radarr</strong>. If you don’t keep them the same, you run into trouble.</p>
 <p>First, I show two options when you can’t keep the paths the same (say you have a linux node running EMBY and a Windows (don’t mention it) node for Sonarr/Radarr. It’s obvious the paths will never be the same, as Linux will give you a PATH like below.</p>
 <pre><code>/home/user/video/movies/Your Old Movie (1921)/Your.Old.Movie.1921.Remux-2160p.mkv
@@ -653,6 +994,8 @@ echo &quot;$(basename $0) last run was at $(date)&quot; &gt; /logging/sonarr/_$(
 <p><img src="https://micro.mjanssen.nl/uploads/2024/cleanshot-2023-02-02-at-17.51.302x.png" alt=""></p>
 <p>📺🎥📽️</p>
 
+    <button class="tinylytics_kudos" data-path="/2024/12/07/getting-your-emby.html"></button>
+
 		</div>
 	  </div>
 	
@@ -681,6 +1024,8 @@ echo &quot;$(basename $0) last run was at $(date)&quot; &gt; /logging/sonarr/_$(
 <p>And what I also installed was code formatter for python. Shift-command-x : this opens the extensions. Enter &ldquo;autopep8&rdquo; in the search field. Press shift-option-f: to start the formatter when your cursor is on a line that needs formatting. This little baby formats your code. Cut the extra white-space. Correct the indenting. All kind of stuff.</p>
 <p>I stopped using Windows at home for more than 11 years and left everything from Microsoft alone, switching to Apple and got the complete fruitbasket with all it&rsquo;s products. But VScode has surprised me and it&rsquo;s gonna stay for python editing&hellip;&hellip; 📝🖋️</p>
 
+    <button class="tinylytics_kudos" data-path="/2024/12/07/choosing-your-python.html"></button>
+
 		</div>
 	  </div>
 	
@@ -693,11 +1038,11 @@ echo &quot;$(basename $0) last run was at $(date)&quot; &gt; /logging/sonarr/_$(
 
 		<div class="e-content">
 			 <p>Well, on my quest to learn python, I poked and peeked around at the web of inters. And came across some nice sites about the micro:bits, projects and coding.</p>
-<p><a href="deejaygraham.github.io/category/microbit/">One site</a> inspired me to create a python version of Starbit Commander. This site is home to many projects of <a href="deejaygraham.github.io/about/">Derek Graham</a>. Next to Micro:bit bits, he has many other things too on his site.</p>
-<p>But why remake of Starbit Commander? Derek has this pleasant example of “<a href="deejaygraham.github.io/2016/10/28/tiny-asteroids-for-microbit/">Tiny Astroids</a>”, which resembled a lot like Starbit Commander. And he created it in Python… so. Mine Starbit Commander should get a python version too… In this little gem from Derek, he created a really, really pleasant piece of code that animated an explosion on this 5×5 LED display. I loved it. And although I wanted to create Starbit from scratch in OO, I really wanted to adopt this pleasant little tiny explosion. So, I contacted Derek via Twitter, asked if he agreed to me use his explosion-code. We had a short but very nice chat on Twitter, and he agreed for the code to be reuse in Starbit Commander. Thanks, Derek!</p>
+<p><a href="https://deejaygraham.github.io/category/microbit/">One site</a> inspired me to create a python version of Starbit Commander. This site is home to many projects of <a href="https://deejaygraham.github.io/about/">Derek Graham</a>. Next to Micro:bit bits, he has many other things too on his site.</p>
+<p>But why remake of Starbit Commander? Derek has this pleasant example of “<a href="https://deejaygraham.github.io/2016/10/28/tiny-asteroids-for-microbit/">Tiny Astroids</a>”, which resembled a lot like Starbit Commander. And he created it in Python… so. Mine Starbit Commander should get a python version too… In this little gem from Derek, he created a really, really pleasant piece of code that animated an explosion on this 5×5 LED display. I loved it. And although I wanted to create Starbit from scratch in OO, I really wanted to adopt this pleasant little tiny explosion. So, I contacted Derek via Twitter, asked if he agreed to me use his explosion-code. We had a short but very nice chat on Twitter, and he agreed for the code to be reuse in Starbit Commander. Thanks, Derek!</p>
 <p>Well, I wanted to test and learn more python and also OO in python. So, I decided to try to make Starbit Commander in an OO-style. I have no experience in this, but I think (as far as I can tell) this is an OO-version of the game now. Derek mentioned on micro:bit V1&rsquo;s coding OO would let you ran into out of memory errors. I haven&rsquo;t seen them on the microbit V2 with Starbit Commander. (Now I&rsquo;m worried if I did a proper OO-coding style ;-0)</p>
 <p>I differed a bit from the original Starbit code. While de MakeCode version has power-ups to collect, in this python-version I decided to skip that and make the astroid field a bit more challenging by starting slow and easy and ending fast and astroid-crowded. Giving you more and more bonus score along the way you go.</p>
-<p>This code can be found <a href="https://github.com/marc0janssen/Starbit-Commander-II">here</a>. And watch that explosion… Thanks again, Derek Graham! 🎮🖖🏻🚀</p>
+<p>This code can be found <a href="https://github.com/marc0janssen/Starbit-Commander-II">here</a>. And watch that explosion… Thanks again, Derek Graham!</p>
 
 		</div>
 	  </div>
@@ -909,7 +1254,7 @@ while True:
 <p>I saved this script on the Edgerouter in my $HOME directory with the following name: create_networkgroup_countrycode.sh</p>
 <pre><code>#!/bin/sh
 
-# Name: creete_networkgroup_asn.sh
+# Name: create_networkgroup_asn.sh
 # Coder: Marco Janssen (mastodon [@marc0janssen@mastodon.online](https://micro.blog/marc0janssen@mastodon.online))
 # date: 2024-01-17 21:30:00
 # update: 2024-01-31 21:39:00
@@ -1117,6 +1462,8 @@ exit</p>
 <p>These network-groups are considerably smaller, I don’t really notice any extra boottime of the router.</p>
 <h3 id="what-is-next-1">What is next?</h3>
 <p>Now you have your network-group called “AS20940” (for this example) in the Edgerouter. You can use like it like any other resource in a firewall rule. You can now allow this network-group through your firewall and block all others that are not in this group (so allow only this provider to your webserver or whatever). Or you can block this network-group from your webserver and allow all other providers. It’s up to you. 📝</p>
+
+    <button class="tinylytics_kudos" data-path="/2024/12/07/blocking-or-allowing.html"></button>
 
 		</div>
 	  </div>
@@ -1531,11 +1878,7 @@ keybase follow marc0janssen
 		<a href="https://micro.mjanssen.nl/2023/02/11/setting-up-jellyseerr.html" class="u-url"><time class="dt-published" datetime="2023-02-11 11:24:25 &#43;0100">Feb 11, 2023</time></a>
 
 		<div class="e-content">
-			 <p>
-    <button class="tinylytics_kudos" data-path="/2023/02/11/setting-up-jellyseerr.html"></button>
-
-    <span class="tinylytics_hits" data-path="/2023/02/11/setting-up-jellyseerr.html"></span></p>
-<p>Jellyseerr is a free and open source software application for managing requests for your media library. It is a a fork of Overseerr built to bring support for Jellyfin &amp; Emby media servers! Follow <a href="https://github.com/Fallenbagel/jellyseerr">this link</a> for more info.</p>
+			 <p>Jellyseerr is a free and open source software application for managing requests for your media library. It is a a fork of Overseerr built to bring support for Jellyfin &amp; Emby media servers! Follow <a href="https://github.com/Fallenbagel/jellyseerr">this link</a> for more info.</p>
 <h2 id="docker">Docker</h2>
 <h3 id="docker-composeyml">Docker-compose.yml</h3>
 <pre><code>version: '3'
@@ -1624,6 +1967,8 @@ failregex = \[info\]\[Auth\]: Failed login attempt from user with incorrect Jell
 ignoreregex =
 </code></pre>
 <p>📺🎮</p>
+
+    <button class="tinylytics_kudos" data-path="/2023/02/11/setting-up-jellyseerr.html"></button>
 
 		</div>
 	  </div>
