@@ -24,6 +24,275 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://micro.mjanssen.nl/2025/03/25/escaping-usa-tech-bye-bye.html">📟 Escaping USA Tech, Bye Bye Dropbox, Hello! Jottacloud</a></h1>
+		
+
+		<a href="https://micro.mjanssen.nl/2025/03/25/escaping-usa-tech-bye-bye.html" class="u-url"><time class="dt-published" datetime="2025-03-25 12:50:36 &#43;0100">Mar 25, 2025</time></a>
+
+		<div class="e-content">
+			 <p>I recently got more concerned about what is happening in the US since a certain president He-Who-Must-Not-Be-Named and what this does in the world and my personal life. I was already on a streak, cutting loose from BIG-TECH social media like META’s “suite” and Google. This was also for privacy concerns.</p>
+<p>I got concern about having all my data, partly client side encrypted but partly not, stored in the USA with Dropbox. I really liked Dropbox because it has a great adoption rate in other apps and products. But I did not like it that all my data was in the US. And with the recent presidency of He-Who-Must-Not-Be-Named, I got more concerned about my data with Dropbox.</p>
+<p>Finding a European alternative with the same level of integration in software and services as Dropbox is a challenging task. Not that these services are inferior, but integrating them can sometimes be difficult. My goal was to achieve incremental backups of my shared folders on a Synology NAS and have the sync folder from my cloud storage synchronised with the Synology NAS.</p>
+<p>This would be typically done with Hyperbackup for incremental backups and Cloud Sync for your sync folder. Most of the services listed there are either US-based, expensive, no up to the job, etc. A least for me.</p>
+<p>After looking around and comparing European-based cloud providers, I got my eye on <a href="https://www.jottacloud.com/" title="Home Jottacloud">Jottacloud</a>. This is a Norwegian cloud provider which is fast, in Europe of course, nice supporting clients for iOS and macOS (Yes, also US BIG-TECH, but I love Apple, there is nothing that compares with Apple Products. And I think Apple is doing a better job on privacy), has a great deal on “unlimited” storage space. The only downside Jottacloud has, they don’t (like Dropbox) have zero-knowledge encryption. If they had it, would enhance privacy a lot… But since they are in Europe with strict privacy laws, I took that as a step forward compared to the US-based Dropbox. Plus, the unlimited storage deal at JottaCloud is the same price as the 2 TB deal I had at Dropbox. <code>Just a hint: if you look around on the internet you can find Jottacloud deals. I got a deal with 15% off for the first year.</code></p>
+<p>Jottacloud also runs on 100% renewable energy, if you care for such a thing (I do).</p>
+<p>Jottacloud is not one of the default services supported by Synology in their backup suite and other software. This is a shame, but there is a way to still create nice incremental backups of your shared folders to Jottacloud directly from your Synology.</p>
+<p>This is achieved using a brilliant free application called Restic. <a href="https://restic.readthedocs.io/en/stable/" title="Read The Docs Restic">Restic</a> is a free, open-source backup tool offering secure, efficient, and flexible data protection. It supports multiple storage backends, including cloud services, and features encryption, deduplication, and compression. Restic is user-friendly and suitable for various operating systems, making it ideal for both personal and professional backup needs.</p>
+<p>To access Jottacloud with Restic, I used Rclone. <a href="https://rclone.org" title="The home of Rclone">Rclone</a> is a versatile command-line tool for managing cloud storage, offering features such as file syncing, encryption, and compression. It supports over 70 cloud services, including Jottacloud, Google Drive, and Amazon S3, and is ideal for automating backups and data transfers across various platforms with ease and reliability.</p>
+<p>Rclone and Restic are not natively available on your Synology. There are scripts and methods to install them via the NAS shell. However, I am a fan of Docker. Since I own a Synology that supports Docker, which Synology refers to as &ldquo;Container Manager&rdquo; in their DSM, I implemented Restic and Rclone using Docker.</p>
+<p><a href="https://www.docker.com" title="The home of Docker">Docker</a> is a containerisation platform that enables efficient deployment and management of applications. It allows developers to package software into portable containers, ensuring consistent performance across environments. Docker streamlines development, testing, and deployment processes, enhancing flexibility and scalability for a wide range of applications and services.</p>
+<p>If your Synology does not support Docker, you can still achieve what is described below by using a <a href="https://www.raspberrypi.com" title="Home of the Raspberry PI (Not the cakes though)">Raspberry Pi</a>. You can in install your favourite OS (mine is Ubuntu on the PI) and <a href="https://docs.docker.com/engine/install/ubuntu/" title="Installing Docker on Ubuntu">install Docker within Ubuntu</a> on this beautiful device. If you have done so, you can connect your shared folders using NFS to the Ubuntu installation you can use the method that is described below.</p>
+<p>Okay, how is this done? Five years ago, I came a cross of a nice five-year-old (at that time) project on GitHub. This already made a docker container including Restic and Rclone. At the time It was not recently maintained (older Restic version, not build with the latest package) I decided to fork this project and update and enhance it. My GitHub repository can be found <a href="https://github.com/marc0janssen/restic-backup-helper" title="Repository Restic Backup Helper">here</a>. The pre-build docker images for ARM and AMD can be found <a href="https://hub.docker.com/repository/docker/marc0janssen/restic-backup-helper/general" title="Docker Hub Images Restic Backup Helper">here</a>.</p>
+<p>I recently added an option to set up a sync with your sync-folder, supported by your cloud provider. I will explain that later. First, we set up the container in Docker.</p>
+<p>Below you find a template docker-compose.yml file. This uses the stable build for the image. If you like the development tree, use the <code>marc0janssen/restic-backup-helper:develop</code> as an image reference.</p>
+<pre><code>version: '3'
+
+services:
+  restic-remote:
+    container_name: restic-remote
+    image: marc0janssen/restic-backup-helper:latest
+    restart: always
+    hostname: supernode
+    cap_add:
+      - DAC_READ_SEARCH
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
+    environment:
+      - RESTIC_PASSWORD=YOUR_PASSWORD_HERE
+      - RESTIC_TAG=YOUR_TAGS_HERE
+      - RESTIC_FORGET_ARGS=--prune --keep-hourly 24 --keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 10
+      - RESTIC_REPOSITORY=rclone:jottacloud:backups
+      - RESTIC_JOB_ARGS=--exclude-file /config/exclude_files.txt
+      - BACKUP_CRON=0 1,13 * * *
+      - BACKUP_ROOT_DIR=/volume1/data
+      - MAILX_RCPT=your_mail@here.tld
+      - MAILX_ON_ERROR=OFF
+      - CHECK_CRON=37 1 1 * *
+      - RCLONE_CONFIG=/config/rclone.conf
+      - SYNC_JOB_FILE=/config/sync_jobs.txt
+      - SYNC_JOB_ARGS=--exclude-from exclude_sync.txt
+      - SYNC_CRON=*/10 * * * *
+      - TZ=Europe/Amsterdam
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /path/to/your/hooks:/hooks
+      - /path/to/your/log:/var/log
+      - /path/to/your/data:/data
+      - /path/to/your/config/:/config
+      - /path/to/your/config/msmtprc:/etc/msmtprc
+      - /volume1/data:/volume1/data
+</code></pre>
+<p>Set up the following tree for your installation:</p>
+<pre><code>./
+├── config
+│   ├── exclude_files.txt
+│   ├── exclude_sync.txt
+│   ├── include_files.txt
+│   ├── msmtprc
+│   ├── rclone.conf
+│   └── sync_jobs.txt
+├── hooks
+├── log
+│   ├── backup-error-last.log
+│   ├── backup-last.log
+│   ├── check-error-last.log
+│   ├── check-last.log
+│   └── cron.log
+└── scripts
+    └── docker-compose.yml
+</code></pre>
+<ul>
+<li>
+<p>config</p>
+<ul>
+<li><code>exclude_files.txt</code> - files/folders to exclude from your Restic backups</li>
+<li><code>exclude_sync.txt</code> - files/folders to exclude from your Rclone bisync</li>
+<li><code>include_files.txt</code> - files/folders to include from your Restic backups</li>
+<li><code>msmtprc</code> - configuration file for the msmtp-client</li>
+<li><code>rclone.conf</code> - configuration file for your rclone client</li>
+<li><code>sync_jobs.txt</code> - configuration file with sync jobs for rclone</li>
+</ul>
+</li>
+<li>
+<p>hooks</p>
+<ul>
+<li><code>pre-backup.sh</code> - script started before backup</li>
+<li><code>post-backup.sh</code> - script started after backup</li>
+<li><code>pre-check.sh</code> - script started before checking the repository</li>
+<li><code>post-check.sh</code> - script started after checking the repository</li>
+<li><code>pre-sync.sh</code> - script started before sync of sync folder</li>
+<li><code>post-sync.sh</code> - script started after sync of sync folder</li>
+</ul>
+</li>
+<li>
+<p>log</p>
+<ul>
+<li><code>backup-error-last.log</code> - Most recent backup error log</li>
+<li><code>backup-last.log</code> - Most recent backup log</li>
+<li><code>check-error-last.log</code> - Most recent repository check error log</li>
+<li><code>check-last.log</code> - Most recent repository check log</li>
+<li><code>cron.log</code> - Active cron log</li>
+<li><code>sync-error-last.log</code> - Most recent sync error log</li>
+<li><code>sync-last.log</code> - Most recent sync log</li>
+</ul>
+</li>
+<li>
+<p>scripts</p>
+<ul>
+<li><code>docker-compose.yml</code> - Container Configuration file</li>
+</ul>
+</li>
+</ul>
+<p>The first thing to do is run create a rclone config file. I, personally, do this within Ubuntu on a Raspberry Pi, where I installed rclone. Run the follow command and follow its instructions:</p>
+<pre><code>rclone config
+</code></pre>
+<p>To choose the following option, <code>n) New remote</code>. Enter a name for your new remote. Since I use Jottacloud, I entered <code>Jottacloud</code>. A list of cloud providers is shown. Jottacloud is number <code>25</code>. Enter this number on the CLI. The next question is if you have an advanced configuration, for me, this answer is the default <code>no</code>. After this, you have to select an authentication type. Choose <code>1 Standard authentication</code>. Now you have to generate a <code>Personal login token</code>. This can be generated <a href="https://www.jottacloud.com/web/secure" title="Generate a Personal login token">here</a>. Paste this token in the CLI and press enter. The next question is if you use a non-standard device or mountpoint. For a backup is <code>n) No (default)</code> but if you want to use the sync option of this image I advise you to select <code>y) Yes</code> and pick the <code>Sync</code> mount point. For now, select <code>n) No (default)</code>. Confirm your config. Your new created <code>rclone.conf</code> can be found in:</p>
+<pre><code>~/.config/rclone/rclone.conf
+</code></pre>
+<p>Copy this file to the <code>/config/</code> directory of the tree shown above.</p>
+<p><strong>NOTE: If you plan to back up multiple nodes with their containers. And you decide to have a rclone and Restic package on your client desktop or laptop. And also connect to the repository, <em>ALWAYS</em> have a new separate rclone.conf file. Your token will get invalid if you connect with multiple nodes to use the same token.</strong></p>
+<p><strong>NOTE: Also make sure the rclone.conf file is writable for the restic-helper-container, since Rclone will update the expiration date for the token. If it fails to do so, your token will get invalid.</strong></p>
+<p>If the token gets invalid, you can update your token with:</p>
+<pre><code>rclone config reconnect jottacloud:
+</code></pre>
+<p>Where <code>jottacloud:</code> is the name of your remote.</p>
+<p>The next stop is to create a configuration file for the mail option in the container. This file should look like the following example.</p>
+<pre><code>account default
+from _mail_from@here.tld_
+host _smtp_host.here.tld_
+port 587
+tls on
+auth on
+user _login@here.tld_
+password _Pa55w0rd_h3r3_
+</code></pre>
+<p>Next stop is to create a configuration file for the files you would rather not back up from your source. A basic file for a Synology would be something like the following example. Of course, you can add your exclusions to the file <code>exclude_files.txt</code>.</p>
+<pre><code>*@eaDir*
+.DS_Store
+**/#recycle
+</code></pre>
+<p>Setting the <code>BACKUP_ROOT_DIR</code> environment variable in the <code>docker-compose.yml</code> file to a shared directory of your Synology would only back up that directory, <code>ex.: BACKUP_ROOT_DIR=/volume1/data</code>. That is probably not what you want. You most likely want to back up more shared directories. If you choose <code>BACKUP_ROOT_DIR=/volume1</code> to do so, I would back up <strong><em>ALL</em></strong> the stuff in <code>/volume1</code> and that is also not what we want.</p>
+<p>To come around this, you leave <code>BACKUP_ROOT_DIR=</code> empty and set up <code>include_files.txt</code>. This file holds the files and directories you would like to back up.</p>
+<pre><code>/volume1/content
+/volume1/docker
+/volume1/documents
+/volume1/homes
+/volume1/homevideo
+/volume1/inbox
+/volume1/logging
+/volume1/photo
+/volume1/progrmamming
+/volume1/software
+</code></pre>
+<p>Edit your <code>docker-compose.yml</code> with the following line.</p>
+<pre><code>- RESTIC_JOB_ARGS=--exclude-file /config/exclude_files.txt --files-from /config/include_files.txt
+</code></pre>
+<p>Now set up the rest of the <code>docker-compose.yml</code> file and start your container. The following command will get you started to start the container.</p>
+<pre><code>docker-compose -p &quot;restic-backup-helper&quot; -f /path/to/your/docker-compose.yml up -d --remove-orphans
+</code></pre>
+<p>Of course, if you use Portainer. You can create a stack and past the content of the <code>docker-compose.yml</code> in the editor and start your container like so.</p>
+<p><a href="https://www.portainer.io" title="Home of Portainer">Portainer</a> is an open-source container management platform offering a user-friendly graphical interface for managing Docker and Kubernetes environments. It simplifies deployment, monitoring, and maintenance of containerised applications, providing a unified dashboard for multiple environments and supporting various container technologies like Docker Swarm and Azure ACI.</p>
+<p>If you set up the container correctly, you would see something like this.</p>
+<pre><code>🌟 *************************************************
+🌟 ***           Restic Backup Helper            ***
+🌟 *************************************************
+🚀 Starting container Restic Backup Helper 'kish' on: 2025-03-25 19:03:16...
+📦 Release: 1.6.52-0.17.3-dev
+🔍 Checking repository status...
+ℹ️ Repository check status: 0
+✅ Restic repository 'rclone:jottacloud:backups' attached and accessible.
+⏰ Setting up backup cron job with expression: 30 17 * * 6
+⏰ Setting up sync cron job with expression: */5 * * * *
+✅ Container started successfully.
+</code></pre>
+<p>In this example, the backup will be executed every Saturday at 17:30. The repository can be found on <code>rclone:jottacloud:backups</code>. This will back it up to the archive part of Jottacloud.</p>
+<p>If there is a successful backup, you will see output like this.</p>
+<pre><code>ℹ️ Pre-backup script not found...
+🔄 Starting Backup at 2025-03-25 17:30:00
+📦 Performing backup of /volume1/inbox...
+✅ Backup Successful
+🏁 Finished backup at 2025-03-25 17:30:38 after 0m 38s
+ℹ️ Post-backup script not found...
+</code></pre>
+<p>So your backup is nice and running. In the example above, there a second CRON with runs every 5 minutes. This is the sync folder the connects to the Jottacloud synchronisation part of the cloud.</p>
+<p>The setting this up runs <code>rclone config</code> again, runs through the same steps as shown above but <strong>if the question comes for a non-standard device or mountpoint. Choose YES</strong> and choose the option <code>Sync</code>. This gives Rclone access to the synchronisation part of Jottacloud. The advantage is that whatever you sync from your Synology to Jottacloud, the Jottacloud software will pick this up and sync this to your other devices. If you have the Jottacloud software installed.</p>
+<p><strong>Don’t forget to pick a new TOKEN, and after you generate that new config file (with two remotes) copy it to <code>/config/</code> of your container. Also pick a new name for that remote like <code>jottasync</code>.</strong></p>
+<p>Set up the following environment variables in the <code>docker-compose.yml</code> file.</p>
+<pre><code>      - SYNC_JOB_FILE=/config/sync_jobs.txt
+      - SYNC_JOB_ARGS=--exclude-from exclude_sync.txt
+      - SYNC_CRON=*/10 * * * *
+</code></pre>
+<p>The <code>sync_jobs.txt</code> should contain something like this.</p>
+<pre><code># SYNC JOBS
+# SOURCE;DESTINATION
+
+/volume1/inbox;jottasync:/inbox
+/volume1/photo;jottasync:/photo
+/volume1/documents;jottasync:/documents
+</code></pre>
+<p>It is the source and destination of the data you like to sync.</p>
+<p>The <code>exclude_sync.txt</code> should contain the files and directories you don’t like to sync.</p>
+<pre><code># Exclude system directories
+@eaDir/**
+\#recycle/**
+
+# Exclude macOS system files
+.DS_Store
+</code></pre>
+<p>And set your <code>SYNC_CRON</code> with the desired interval of your sync.</p>
+<p>If all is well set up, you will see output for the <strong>first run only</strong> like the following example.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">🔀 Performing sync of /volume1/inbox &lt;-&gt; jottasync:/inbox...
+❌ Sync Failed with Status <span style="color:#ae81ff">2</span>
+🚨 Starting recovery procedure...
+🔄 Step 1: Updating from /volume1/inbox to jottasync:/inbox
+🔄 Step 2: Updating from jottasync:/inbox to /volume1/inbox
+🔄 Step 3: Performing full resync between /volume1/inbox and jottasync:/inbox
+✅ Recovery Successful - All steps completed
+📊 Recovery Exitcode Summary: Source→Dest<span style="color:#f92672">=</span>0, Dest→Source<span style="color:#f92672">=</span>0, Resync<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+🏁 Finished sync at 2025-03-25 19:25:00 after 0m 20s
+🔀 Performing sync of /volume1/photo &lt;-&gt; jottasync:/photo...
+❌ Sync Failed with Status <span style="color:#ae81ff">2</span>
+🚨 Starting recovery procedure...
+🔄 Step 1: Updating from /volume1/photo to jottasync:/photo
+🔄 Step 2: Updating from jottasync:/photo to /volume1/photo
+🔄 Step 3: Performing full resync between /volume1/photo and jottasync:/photo
+✅ Recovery Successful - All steps completed
+📊 Recovery Exitcode Summary: Source→Dest<span style="color:#f92672">=</span>0, Dest→Source<span style="color:#f92672">=</span>0, Resync<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+🏁 Finished sync at 2025-03-25 19:25:20 after 0m 20s
+🔀 Performing sync of /volume1/documents &lt;-&gt; jottasync:/documents...
+❌ Sync Failed with Status <span style="color:#ae81ff">2</span>
+🚨 Starting recovery procedure...
+🔄 Step 1: Updating from /volume1/documents to jottasync:/documents
+🔄 Step 2: Updating from jottasync:/documents to /volume1/documents
+🔄 Step 3: Performing full resync between /volume1/documents and jottasync:/documents
+✅ Recovery Successful - All steps completed
+📊 Recovery Exitcode Summary: Source→Dest<span style="color:#f92672">=</span>0, Dest→Source<span style="color:#f92672">=</span>0, Resync<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+🏁 Finished sync at 2025-03-25 19:25:40 after 0m 20s
+</code></pre></div><p>The first sync will “fail” because the caches are not yet up to date. The script will handle this correctly for the second run of your sync. Like you see below.</p>
+<p>If all is well set up, you will see output like the following example.</p>
+<pre><code>ℹ️ Pre-sync script not found...
+🔀 Performing sync of /volume1/inbox &lt;-&gt; jottasync:/inbox...
+✅ Sync Successful
+🏁 Finished sync at 2025-03-25 19:30:11 after 0m 11s
+🔀 Performing sync of /volume1/photo &lt;-&gt; jottasync:/photo...
+✅ Sync Successful
+🏁 Finished sync at 2025-03-25 19:30:24 after 0m 24s
+🔀 Performing sync of /volume1/documents &lt;-&gt; jottasync:/documents...
+✅ Sync Successful
+🏁 Finished sync at 2025-03-25 19:30:33 after 0m 33s
+ℹ️ Post-sync script not found...
+</code></pre>
+<p><strong>Note: The default for Rclone bisync is that is 50% more difference between the source and the destination are found, Rclone will fail and exit. The script syncing your data will then try to copy all data back from the source to the destination and from destination to source. This will look like all syncs did not work, but actually, it is a safety measure. If you don’t want this, add <code>--force</code> to your <code>SYNC_JOB_ARGS</code>.</strong></p>
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
+    <button class="tinylytics_kudos" data-path="/2025/03/25/escaping-usa-tech-bye-bye.html"></button></p>
+<p>📝✏️</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 
 		<a href="https://micro.mjanssen.nl/2025/03/20/does-anyone-know-if-there.html" class="u-url"><time class="dt-published" datetime="2025-03-20 15:46:11 &#43;0100">Mar 20, 2025</time></a>
 
@@ -350,9 +619,9 @@ commit
 save
 exit
 </code></pre>
-<p>📝
-
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
     <button class="tinylytics_kudos" data-path="/2025/03/19/setting-up-wireguard-on-your.html"></button></p>
+<p>📝</p>
 
 		</div>
 	  </div>
@@ -719,9 +988,9 @@ commit
 save
 exit
 </code></pre>
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
+    <button class="tinylytics_kudos" data-path="/2025/03/08/set-up-qos-with-edgeos.html"></button></p>
 <p>📝🎮📺</p>
-
-    <button class="tinylytics_kudos" data-path="/2025/03/08/set-up-qos-with-edgeos.html"></button>
 
 		</div>
 	  </div>
@@ -992,9 +1261,9 @@ echo &quot;$(basename $0) last run was at $(date)&quot; &gt; /logging/sonarr/_$(
 <p>These scripts also maintain lists of the content names, so they can be used in reporting or notification. You can, of course, strip these.</p>
 <p>I run these scripts in the <strong>Connect</strong> section in Radarr/Sonarr.</p>
 <p><img src="https://micro.mjanssen.nl/uploads/2024/cleanshot-2023-02-02-at-17.51.302x.png" alt=""></p>
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
+    <button class="tinylytics_kudos" data-path="/2024/12/07/getting-your-emby.html"></button></p>
 <p>📺🎥📽️</p>
-
-    <button class="tinylytics_kudos" data-path="/2024/12/07/getting-your-emby.html"></button>
 
 		</div>
 	  </div>
@@ -1022,9 +1291,10 @@ echo &quot;$(basename $0) last run was at $(date)&quot; &gt; /logging/sonarr/_$(
 <p>Restart VScode and press shift-command-p and give the command &ldquo;Device Simulator Express: Install Extension Dependencies&rdquo; again. Now the dependencies get installed nicely.</p>
 <p>What I extra installed was a linter. Shift-command-x : this opens the extensions. Enter &ldquo;flake8&rdquo; in the search field. Sometimes you need to restart VS-code to force install-popup for flake8. Now you have error-highting in the editor as you go.</p>
 <p>And what I also installed was code formatter for python. Shift-command-x : this opens the extensions. Enter &ldquo;autopep8&rdquo; in the search field. Press shift-option-f: to start the formatter when your cursor is on a line that needs formatting. This little baby formats your code. Cut the extra white-space. Correct the indenting. All kind of stuff.</p>
-<p>I stopped using Windows at home for more than 11 years and left everything from Microsoft alone, switching to Apple and got the complete fruitbasket with all it&rsquo;s products. But VScode has surprised me and it&rsquo;s gonna stay for python editing&hellip;&hellip; 📝🖋️</p>
-
-    <button class="tinylytics_kudos" data-path="/2024/12/07/choosing-your-python.html"></button>
+<p>I stopped using Windows at home for more than 11 years and left everything from Microsoft alone, switching to Apple and got the complete fruitbasket with all it&rsquo;s products. But VScode has surprised me and it&rsquo;s gonna stay for python editing&hellip;&hellip;</p>
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
+    <button class="tinylytics_kudos" data-path="/2024/12/07/choosing-your-python.html"></button></p>
+<p>📝🖋️</p>
 
 		</div>
 	  </div>
@@ -1136,7 +1406,10 @@ while True:
 <p>This is an interesting method, particularly intended for cases where you want to find the RSS feed for a particular website, but it is not clearly indicated on the site itself. In such circumstances, &ldquo;Educated Guessing&rdquo; is helpful.</p>
 <p>As an illustrative example, let&rsquo;s take <a href="http://example.com/.">example.com/.</a> Suppose you would like to find the RSS feed for this website, but you cannot find it in the usual sections of the website (such as the footer or sidebar). In such a situation, you can resort to educated guessing. This means trying out some obvious URL paths in the hope that one of them leads you to the correct feed.</p>
 <p>Start by appending &lsquo;/feed/&rsquo; after the domain. So, in our example, you would try navigating to <a href="http://example.com/feed/.">example.com/feed/.</a> If this doesn&rsquo;t work, you can try another popular URL structure, such as &lsquo;/rss/&rsquo;. This means navigating to <a href="http://example.com/rss/.">example.com/rss/.</a></p>
-<p>This is, of course, not an exact science, and there is no guarantee that any of these guesses will lead you to the desired RSS feed. However, in practice, you will find that many websites follow these general URL structures for their feeds, making this a valuable technique to try. It is undoubtedly a quick and simple method to attempt to find the RSS feed if you are unable to locate it directly on the website. 📝✏️</p>
+<p>This is, of course, not an exact science, and there is no guarantee that any of these guesses will lead you to the desired RSS feed. However, in practice, you will find that many websites follow these general URL structures for their feeds, making this a valuable technique to try. It is undoubtedly a quick and simple method to attempt to find the RSS feed if you are unable to locate it directly on the website.</p>
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
+    <button class="tinylytics_kudos" data-path="/2024/12/07/how-do-you.html"></button></p>
+<p>📝✏️</p>
 
 		</div>
 	  </div>
@@ -1461,9 +1734,10 @@ exit</p>
 <p><strong>A note</strong></p>
 <p>These network-groups are considerably smaller, I don’t really notice any extra boottime of the router.</p>
 <h3 id="what-is-next-1">What is next?</h3>
-<p>Now you have your network-group called “AS20940” (for this example) in the Edgerouter. You can use like it like any other resource in a firewall rule. You can now allow this network-group through your firewall and block all others that are not in this group (so allow only this provider to your webserver or whatever). Or you can block this network-group from your webserver and allow all other providers. It’s up to you. 📝</p>
-
-    <button class="tinylytics_kudos" data-path="/2024/12/07/blocking-or-allowing.html"></button>
+<p>Now you have your network-group called “AS20940” (for this example) in the Edgerouter. You can use like it like any other resource in a firewall rule. You can now allow this network-group through your firewall and block all others that are not in this group (so allow only this provider to your webserver or whatever). Or you can block this network-group from your webserver and allow all other providers. It’s up to you.</p>
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
+    <button class="tinylytics_kudos" data-path="/2024/12/07/blocking-or-allowing.html"></button></p>
+<p>📝</p>
 
 		</div>
 	  </div>
@@ -1966,9 +2240,9 @@ ignoreip	= 192.168.1.0/24
 failregex = \[info\]\[Auth\]: Failed login attempt from user with incorrect Jellyfin credentials \{&quot;account&quot;:\{&quot;ip&quot;:&quot;&lt;HOST&gt;&quot;,&quot;email&quot;:&quot;.*&quot;,&quot;password&quot;:&quot;__REDACTED__&quot;\}\}
 ignoreregex =
 </code></pre>
+<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
+    <button class="tinylytics_kudos" data-path="/2023/02/11/setting-up-jellyseerr.html"></button></p>
 <p>📺🎮</p>
-
-    <button class="tinylytics_kudos" data-path="/2023/02/11/setting-up-jellyseerr.html"></button>
 
 		</div>
 	  </div>
