@@ -24,10 +24,21 @@
 	
 	  <div class="h-entry">
 		
+
+		<a href="https://micro.mjanssen.nl/2025/03/31/happy-monday-everyone-work-day.html" class="u-url"><time class="dt-published" datetime="2025-03-31 16:26:44 &#43;0200">Mar 31, 2025</time></a>
+
+		<div class="e-content">
+			 <p>Happy Monday everyone&hellip; Work day has finished for me&hellip; I hope you all have a nice day (ahead). 🍀</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://micro.mjanssen.nl/2025/03/25/escaping-usa-tech-bye-bye.html">📟 Escaping USA Tech, Bye Bye Dropbox, Hello! Jottacloud</a></h1>
 		
 
-		<a href="https://micro.mjanssen.nl/2025/03/25/escaping-usa-tech-bye-bye.html" class="u-url"><time class="dt-published" datetime="2025-03-25 12:50:36 &#43;0100">Mar 25, 2025</time></a>
+		<a href="https://micro.mjanssen.nl/2025/03/25/escaping-usa-tech-bye-bye.html" class="u-url"><time class="dt-published" datetime="2025-03-25 23:57:59 &#43;0200">Mar 25, 2025</time></a>
 
 		<div class="e-content">
 			 <p>I recently got more concerned about what is happening in the US since a certain president He-Who-Must-Not-Be-Named and what this does in the world and my personal life. I was already on a streak, cutting loose from BIG-TECH social media like META’s “suite” and Google. This was also for privacy concerns.</p>
@@ -51,6 +62,12 @@ services:
   restic-remote:
     container_name: restic-remote
     image: marc0janssen/restic-backup-helper:latest
+    healthcheck:
+      test: [&quot;CMD&quot;, &quot;restic&quot;, &quot;-r&quot;, &quot;rclone:jottacloud:backups&quot;, &quot;cat&quot;, &quot;config&quot;]
+      interval: 15m
+      timeout: 10s
+      start_period: 1m
+      start_interval: 10s
     restart: always
     hostname: supernode
     cap_add:
@@ -78,7 +95,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /path/to/your/hooks:/hooks
       - /path/to/your/log:/var/log
-      - /path/to/your/data:/data
+      - /path/to/your/restore:/restore
       - /path/to/your/config/:/config
       - /path/to/your/config/msmtprc:/etc/msmtprc
       - /volume1/data:/volume1/data
@@ -144,17 +161,20 @@ services:
 </ul>
 </li>
 </ul>
-<p>The first thing to do is run create a rclone config file. I, personally, do this within Ubuntu on a Raspberry Pi, where I installed rclone. Run the follow command and follow its instructions:</p>
-<pre><code>rclone config
+<p>The first thing to do is to create a rclone config file. I, personally, do this within Ubuntu on a Raspberry Pi, where I installed rclone. Run the follow command and follow its instructions:</p>
+<pre><code>$ rclone config
 </code></pre>
 <p>To choose the following option, <code>n) New remote</code>. Enter a name for your new remote. Since I use Jottacloud, I entered <code>Jottacloud</code>. A list of cloud providers is shown. Jottacloud is number <code>25</code>. Enter this number on the CLI. The next question is if you have an advanced configuration, for me, this answer is the default <code>no</code>. After this, you have to select an authentication type. Choose <code>1 Standard authentication</code>. Now you have to generate a <code>Personal login token</code>. This can be generated <a href="https://www.jottacloud.com/web/secure" title="Generate a Personal login token">here</a>. Paste this token in the CLI and press enter. The next question is if you use a non-standard device or mountpoint. For a backup is <code>n) No (default)</code> but if you want to use the sync option of this image I advise you to select <code>y) Yes</code> and pick the <code>Sync</code> mount point. For now, select <code>n) No (default)</code>. Confirm your config. Your new created <code>rclone.conf</code> can be found in:</p>
 <pre><code>~/.config/rclone/rclone.conf
 </code></pre>
 <p>Copy this file to the <code>/config/</code> directory of the tree shown above.</p>
+<p>Remember to set <code>RESTIC_REPOSITORY</code> and <code>healthcheck:</code> in the <code>docker-compose.yml</code> to the path of your repository. For me, this would be:</p>
+<pre><code>rclone:jottacloud:backups
+</code></pre>
 <p><strong>NOTE: If you plan to back up multiple nodes with their containers. And you decide to have a rclone and Restic package on your client desktop or laptop. And also connect to the repository, <em>ALWAYS</em> have a new separate rclone.conf file. Your token will get invalid if you connect with multiple nodes to use the same token.</strong></p>
 <p><strong>NOTE: Also make sure the rclone.conf file is writable for the restic-helper-container, since Rclone will update the expiration date for the token. If it fails to do so, your token will get invalid.</strong></p>
 <p>If the token gets invalid, you can update your token with:</p>
-<pre><code>rclone config reconnect jottacloud:
+<pre><code>$ rclone config reconnect jottacloud:
 </code></pre>
 <p>Where <code>jottacloud:</code> is the name of your remote.</p>
 <p>The next stop is to create a configuration file for the mail option in the container. This file should look like the following example.</p>
@@ -182,14 +202,22 @@ password _Pa55w0rd_h3r3_
 /volume1/inbox
 /volume1/logging
 /volume1/photo
-/volume1/progrmamming
+/volume1/programming
 /volume1/software
 </code></pre>
 <p>Edit your <code>docker-compose.yml</code> with the following line.</p>
 <pre><code>- RESTIC_JOB_ARGS=--exclude-file /config/exclude_files.txt --files-from /config/include_files.txt
 </code></pre>
+<p>We still need to create a repository in the cloud, Jottacloud that is. Here we need to use Restic on the linux CLI. I do this again from an Ubuntu installation on a Raspberry Pi. The command you have to execute is:</p>
+<pre><code>$ restic -r rclone:jottacloud:backups init
+</code></pre>
+<ul>
+<li>rclone - This is the protocol we like to use</li>
+<li>jottacloud - This is the remote you created with rclone</li>
+<li>backups - This is a target that will be created in the Jottacloud Archive section.</li>
+</ul>
 <p>Now set up the rest of the <code>docker-compose.yml</code> file and start your container. The following command will get you started to start the container.</p>
-<pre><code>docker-compose -p &quot;restic-backup-helper&quot; -f /path/to/your/docker-compose.yml up -d --remove-orphans
+<pre><code>$ docker-compose -p &quot;restic-backup-helper&quot; -f /path/to/your/docker-compose.yml up -d --remove-orphans
 </code></pre>
 <p>Of course, if you use Portainer. You can create a stack and past the content of the <code>docker-compose.yml</code> in the editor and start your container like so.</p>
 <p><a href="https://www.portainer.io" title="Home of Portainer">Portainer</a> is an open-source container management platform offering a user-friendly graphical interface for managing Docker and Kubernetes environments. It simplifies deployment, monitoring, and maintenance of containerised applications, providing a unified dashboard for multiple environments and supporting various container technologies like Docker Swarm and Azure ACI.</p>
@@ -217,7 +245,7 @@ password _Pa55w0rd_h3r3_
 </code></pre>
 <p>So your backup is nice and running. In the example above, there a second CRON with runs every 5 minutes. This is the sync folder the connects to the Jottacloud synchronisation part of the cloud.</p>
 <p>The setting this up runs <code>rclone config</code> again, runs through the same steps as shown above but <strong>if the question comes for a non-standard device or mountpoint. Choose YES</strong> and choose the option <code>Sync</code>. This gives Rclone access to the synchronisation part of Jottacloud. The advantage is that whatever you sync from your Synology to Jottacloud, the Jottacloud software will pick this up and sync this to your other devices. If you have the Jottacloud software installed.</p>
-<p><strong>Don’t forget to pick a new TOKEN, and after you generate that new config file (with two remotes) copy it to <code>/config/</code> of your container. Also pick a new name for that remote like <code>jottasync</code>.</strong></p>
+<p><strong>Don’t forget to pick a new TOKEN, and after you generate that new config file (with two remotes) copy it to</strong> <code>/config/</code> <strong>of your container. Also pick a new name for that remote like</strong> <code>jottasync</code><strong>.</strong></p>
 <p>Set up the following environment variables in the <code>docker-compose.yml</code> file.</p>
 <pre><code>      - SYNC_JOB_FILE=/config/sync_jobs.txt
       - SYNC_JOB_ARGS=--exclude-from exclude_sync.txt
@@ -240,37 +268,37 @@ password _Pa55w0rd_h3r3_
 # Exclude macOS system files
 .DS_Store
 </code></pre>
-<p>And set your <code>SYNC_CRON</code> with the desired interval of your sync.</p>
+<p>And set your <code>SYNC_CRON</code>with the desired interval of your sync.</p>
 <p>If all is well set up, you will see output for the <strong>first run only</strong> like the following example.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">🔀 Performing sync of /volume1/inbox &lt;-&gt; jottasync:/inbox...
-❌ Sync Failed with Status <span style="color:#ae81ff">2</span>
+<pre><code>🔀 Performing sync of /volume1/inbox &lt;-&gt; jottasync:/inbox...
+❌ Sync Failed with Status 2
 🚨 Starting recovery procedure...
 🔄 Step 1: Updating from /volume1/inbox to jottasync:/inbox
 🔄 Step 2: Updating from jottasync:/inbox to /volume1/inbox
 🔄 Step 3: Performing full resync between /volume1/inbox and jottasync:/inbox
 ✅ Recovery Successful - All steps completed
-📊 Recovery Exitcode Summary: Source→Dest<span style="color:#f92672">=</span>0, Dest→Source<span style="color:#f92672">=</span>0, Resync<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-🏁 Finished sync at 2025-03-25 19:25:00 after 0m 20s
+📊 Recovery Exitcode Summary: Source→Dest=0, Dest→Source=0, Resync=0
+🏁 Finished sync at 2025-03-25 15:55:39 after 0m 39s
 🔀 Performing sync of /volume1/photo &lt;-&gt; jottasync:/photo...
-❌ Sync Failed with Status <span style="color:#ae81ff">2</span>
+❌ Sync Failed with Status 2
 🚨 Starting recovery procedure...
 🔄 Step 1: Updating from /volume1/photo to jottasync:/photo
 🔄 Step 2: Updating from jottasync:/photo to /volume1/photo
 🔄 Step 3: Performing full resync between /volume1/photo and jottasync:/photo
 ✅ Recovery Successful - All steps completed
-📊 Recovery Exitcode Summary: Source→Dest<span style="color:#f92672">=</span>0, Dest→Source<span style="color:#f92672">=</span>0, Resync<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-🏁 Finished sync at 2025-03-25 19:25:20 after 0m 20s
+📊 Recovery Exitcode Summary: Source→Dest=0, Dest→Source=0, Resync=0
+🏁 Finished sync at 2025-03-25 15:55:39 after 0m 39s
 🔀 Performing sync of /volume1/documents &lt;-&gt; jottasync:/documents...
-❌ Sync Failed with Status <span style="color:#ae81ff">2</span>
+❌ Sync Failed with Status 2
 🚨 Starting recovery procedure...
 🔄 Step 1: Updating from /volume1/documents to jottasync:/documents
 🔄 Step 2: Updating from jottasync:/documents to /volume1/documents
 🔄 Step 3: Performing full resync between /volume1/documents and jottasync:/documents
 ✅ Recovery Successful - All steps completed
-📊 Recovery Exitcode Summary: Source→Dest<span style="color:#f92672">=</span>0, Dest→Source<span style="color:#f92672">=</span>0, Resync<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-🏁 Finished sync at 2025-03-25 19:25:40 after 0m 20s
-</code></pre></div><p>The first sync will “fail” because the caches are not yet up to date. The script will handle this correctly for the second run of your sync. Like you see below.</p>
-<p>If all is well set up, you will see output like the following example.</p>
+📊 Recovery Exitcode Summary: Source→Dest=0, Dest→Source=0, Resync=0
+🏁 Finished sync at 2025-03-25 15:55:39 after 0m 39s
+</code></pre>
+<p>The first sync will “fail” because the caches are not yet up to date. The script will handle this correctly for the second run of your sync. Like you see below.</p>
 <pre><code>ℹ️ Pre-sync script not found...
 🔀 Performing sync of /volume1/inbox &lt;-&gt; jottasync:/inbox...
 ✅ Sync Successful
@@ -283,10 +311,33 @@ password _Pa55w0rd_h3r3_
 🏁 Finished sync at 2025-03-25 19:30:33 after 0m 33s
 ℹ️ Post-sync script not found...
 </code></pre>
-<p><strong>Note: The default for Rclone bisync is that is 50% more difference between the source and the destination are found, Rclone will fail and exit. The script syncing your data will then try to copy all data back from the source to the destination and from destination to source. This will look like all syncs did not work, but actually, it is a safety measure. If you don’t want this, add <code>--force</code> to your <code>SYNC_JOB_ARGS</code>.</strong></p>
+<p><strong>Note: The default for Rclone bisync if that is 50% more difference between the source and the destination is found, Rclone will fail and exit. The script syncing your data will then try to copy all data back from the source to the destination and from destination to source. This will look like all syncs did not work, but actually, it is a safety measure. If you don’t want this, add</strong> <code>--force</code> <strong>to your</strong> <code>SYNC_JOB_ARGS</code><strong>.</strong></p>
+<p>Here are some examples to use Restic inside the container from the host.</p>
+<p>This command will list all snapshots with Restic from a container <code>restic-remote</code>.</p>
+<pre><code> $ sudo docker exec -ti restic-remote restic snapshots
+</code></pre>
+<p>This command generates the following output.</p>
+<pre><code>ID        Time                 Host        Tags        Paths            Size
+-----------------------------------------------------------------------------------
+9547a8f4  2025-03-21 16:33:45  eridu       eridu       /home/pi/docker  324.319 MiB
+693fc4e7  2025-03-21 23:59:09  eridu       eridu       /home/pi/docker  324.366 MiB
+a2db8a02  2025-03-22 18:00:00  eridu       eridu       /home/pi/docker  324.823 MiB
+b3076cd0  2025-03-22 19:00:00  eridu       eridu       /home/pi/docker  324.476 MiB
+187efc43  2025-03-22 20:00:00  eridu       eridu       /home/pi/docker  324.477 MiB
+e50c1751  2025-03-22 21:00:00  eridu       eridu       /home/pi/docker  324.482 MiB
+</code></pre>
+<p>If you want to list the content of a snapshot, you use the following command.</p>
+<pre><code>$ sudo docker exec -ti restic-remote restic ls 	e50c1751 --long | grep mp3
+</code></pre>
+<p>This command will list all files in the snapshot <code>e50c1751</code>. The grep command will only show you all lines with <code>mp3</code> in its path.</p>
+<p>Restoring files from a snapshot is done with the following command.</p>
+<pre><code>$ sudo docker exec -ti restic-remote restic restore e50c1751 --target /data --include /mnt/data/
+</code></pre>
+<p>This command will restore from snapshot <code>e50c1751</code> to target <code>/data</code>, but only the files from the path <code>/mnt/data/</code></p>
+<p>For all the information you need on Restic, check <a href="https://restic.readthedocs.io/en/stable/" title="Read The Docs Restic">this</a> website.</p>
 <p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
     <button class="tinylytics_kudos" data-path="/2025/03/25/escaping-usa-tech-bye-bye.html"></button></p>
-<p>📝✏️</p>
+<p>✏️📝</p>
 
 		</div>
 	  </div>
@@ -294,7 +345,7 @@ password _Pa55w0rd_h3r3_
 	  <div class="h-entry">
 		
 
-		<a href="https://micro.mjanssen.nl/2025/03/20/does-anyone-know-if-there.html" class="u-url"><time class="dt-published" datetime="2025-03-20 15:46:11 &#43;0100">Mar 20, 2025</time></a>
+		<a href="https://micro.mjanssen.nl/2025/03/20/does-anyone-know-if-there.html" class="u-url"><time class="dt-published" datetime="2025-03-20 16:46:11 &#43;0200">Mar 20, 2025</time></a>
 
 		<div class="e-content">
 			 <p>Does anyone know if there is a good alternative to Dropbox on the European continent?</p>
@@ -305,7 +356,7 @@ password _Pa55w0rd_h3r3_
 	  <div class="h-entry">
 		
 
-		<a href="https://micro.mjanssen.nl/2025/03/20/last-day-of-the-week.html" class="u-url"><time class="dt-published" datetime="2025-03-20 08:51:16 &#43;0100">Mar 20, 2025</time></a>
+		<a href="https://micro.mjanssen.nl/2025/03/20/last-day-of-the-week.html" class="u-url"><time class="dt-published" datetime="2025-03-20 09:51:16 &#43;0200">Mar 20, 2025</time></a>
 
 		<div class="e-content">
 			 <p>☀️Last day of the week&hellip;. A nice workout on the end of the day&hellip;. Hello weekend, here I come&hellip;..</p>
@@ -318,7 +369,7 @@ password _Pa55w0rd_h3r3_
 			<h1><a href="https://micro.mjanssen.nl/2025/03/19/setting-up-wireguard-on-your.html">🛜Setting up Wireguard on Your Ubiquiti Edge Router</a></h1>
 		
 
-		<a href="https://micro.mjanssen.nl/2025/03/19/setting-up-wireguard-on-your.html" class="u-url"><time class="dt-published" datetime="2025-03-19 22:50:16 &#43;0100">Mar 19, 2025</time></a>
+		<a href="https://micro.mjanssen.nl/2025/03/19/setting-up-wireguard-on-your.html" class="u-url"><time class="dt-published" datetime="2025-03-19 23:50:16 &#43;0200">Mar 19, 2025</time></a>
 
 		<div class="e-content">
 			 <p>I aimed to create a VPN router using my Ubiquiti Edge Router ER-12 and utilise the configuration files from NordVPN. Initially, I attempted this with OpenVPN configuration files, which worked flawlessly, but unfortunately, OpenVPN resulted in poor throughput. (I have written another blog post about setting this up with OpenVPN if you need it, but I recommend using WireGuard instead.)</p>
@@ -1378,7 +1429,7 @@ while True:
 			<h1><a href="https://micro.mjanssen.nl/2024/12/07/how-do-you.html">📟How do you find the RSS Feed of a website (if it exists)</a></h1>
 		
 
-		<a href="https://micro.mjanssen.nl/2024/12/07/how-do-you.html" class="u-url"><time class="dt-published" datetime="2024-12-07 09:01:48 &#43;0100">Dec 7, 2024</time></a>
+		<a href="https://micro.mjanssen.nl/2024/12/07/how-do-you.html" class="u-url"><time class="dt-published" datetime="2024-12-07 10:01:48 &#43;0200">Dec 7, 2024</time></a>
 
 		<div class="e-content">
 			 <h2 id="summary">Summary</h2>
@@ -1515,7 +1566,7 @@ while True:
 			<h1><a href="https://micro.mjanssen.nl/2024/12/07/blocking-or-allowing.html">🛜Blocking (or Allowing) whole Countries or a Provider or a Network with your Ubiquiti Edgerouter</a></h1>
 		
 
-		<a href="https://micro.mjanssen.nl/2024/12/07/blocking-or-allowing.html" class="u-url"><time class="dt-published" datetime="2024-12-07 08:57:16 &#43;0100">Dec 7, 2024</time></a>
+		<a href="https://micro.mjanssen.nl/2024/12/07/blocking-or-allowing.html" class="u-url"><time class="dt-published" datetime="2024-12-07 09:57:16 &#43;0200">Dec 7, 2024</time></a>
 
 		<div class="e-content">
 			 <p>I recently picked up a nice second hand Ubiquiti Edgerouter X from <a href="https://www.marktplaats.nl" title="Marktplaats">Marktplaats</a>, which is the Dutch <a href="https://amsterdam.craigslist.org" title="Craiglist">Craigslist</a>. I wanted to play with a firewall in my network. This quickly became a complete rebuild of the network with multiple Vlans in my house. Which was enjoyable because exploring and learning is always a good thing.</p>
@@ -2149,7 +2200,7 @@ keybase follow marc0janssen
 			<h1><a href="https://micro.mjanssen.nl/2023/02/11/setting-up-jellyseerr.html">📺Setting Up Jellyseerr for Emby</a></h1>
 		
 
-		<a href="https://micro.mjanssen.nl/2023/02/11/setting-up-jellyseerr.html" class="u-url"><time class="dt-published" datetime="2023-02-11 11:24:25 &#43;0100">Feb 11, 2023</time></a>
+		<a href="https://micro.mjanssen.nl/2023/02/11/setting-up-jellyseerr.html" class="u-url"><time class="dt-published" datetime="2023-02-11 12:24:25 &#43;0200">Feb 11, 2023</time></a>
 
 		<div class="e-content">
 			 <p>Jellyseerr is a free and open source software application for managing requests for your media library. It is a a fork of Overseerr built to bring support for Jellyfin &amp; Emby media servers! Follow <a href="https://github.com/Fallenbagel/jellyseerr">this link</a> for more info.</p>
