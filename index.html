@@ -1244,8 +1244,10 @@ services:
       - RESTIC_FORGET_ARGS=--prune --keep-hourly 24 --keep-daily 7 --keep-weekly 5 --keep-monthly 12 --keep-yearly 10
       - RESTIC_REPOSITORY=rclone:jottacloud:backups
       - RESTIC_JOB_ARGS=--exclude-file /config/exclude_files.txt
+      - RESTIC_CACHE_DIR=/tmp/cache_dir
+      - TMPDIR=/tmp/host/
       - BACKUP_CRON=0 1,13 * * *
-      - BACKUP_ROOT_DIR=/volume1/data
+      - BACKUP_ROOT_DIR=/data
       - MAILX_RCPT=your_mail@here.tld
       - MAILX_ON_ERROR=OFF
       - CHECK_CRON=37 1 1 * *
@@ -1261,7 +1263,9 @@ services:
       - /path/to/your/restore:/restore
       - /path/to/your/config/:/config
       - /path/to/your/config/msmtprc:/etc/msmtprc
-      - /volume1/data:/volume1/data
+      - /path/to/data:/data
+      - /path/to/your/tmp/:/tmp/restic/
+      - /path/to/your/cache_dir/:/tmp/cache_dir/
 </code></pre>
 <p>Set up the following tree for your installation:</p>
 <pre><code>./
@@ -1498,9 +1502,6 @@ e50c1751  2025-03-22 21:00:00  eridu       eridu       /home/pi/docker  324.482 
 </code></pre>
 <p>This command will restore from snapshot <code>e50c1751</code> to target <code>/data</code>, but only the files from the path <code>/mnt/data/</code></p>
 <p>For all the information you need on Restic, check <a href="https://restic.readthedocs.io/en/stable/" title="Read The Docs Restic">this</a> website.</p>
-<p>If this blog was any help to you, give away a free Lucky Four-Leaf Clover 
-    <button class="tinylytics_kudos" data-path="/2025/03/25/escaping-usa-tech-bye-bye.html"></button></p>
-<p>✏️📝</p>
 
 		</div>
 	  </div>
