@@ -1,11 +1,29 @@
 {
 	"version": "https://jsonfeed.org/version/1",
 	"title": "The Attic",
-	"icon": "https://micro.blog/marc0janssen/avatar.jpg",
+	"icon": "https://avatars.micro.blog/avatars/2025/32/557297.jpg",
 	"home_page_url": "https://micro.mjanssen.nl/",
 	"feed_url": "https://micro.mjanssen.nl/feed.json",
 	"items": [
 		
+			{
+				"id": "http://marc0janssen.micro.blog/2025/08/25/veiligheid-koop-je-niet-met.html",
+				"title": "✏️ Veiligheid koop je niet met een reclamecampagne.",
+				"content_html": "<p>De moord op Lisa vervult me met afschuw en diep ongenoegen. De reflex om meteen naar het AZC te wijzen, is te kortzichtig en miskent het werkelijke probleem. Dit gaat niet over één plek, maar over het structurele geweld van mannen tegen vrouwen, een crisis waar vrouwen veel te vaak het slachtoffer van zijn. Zij hebben recht op echte, effectieve bescherming. Dat er dan €300.000 wordt besteed aan reclamezuilen, is pure symboolpolitiek die niets oplost. Investeer dat geld in concrete hulp: meer opvangplekken, preventie en ondersteuning. De veiligheid van vrouwen moet de prioriteit zijn. Het moet de normaal zijn. #99woorden</p>\n",
+				"content_text": "De moord op Lisa vervult me met afschuw en diep ongenoegen. De reflex om meteen naar het AZC te wijzen, is te kortzichtig en miskent het werkelijke probleem. Dit gaat niet over één plek, maar over het structurele geweld van mannen tegen vrouwen, een crisis waar vrouwen veel te vaak het slachtoffer van zijn. Zij hebben recht op echte, effectieve bescherming. Dat er dan €300.000 wordt besteed aan reclamezuilen, is pure symboolpolitiek die niets oplost. Investeer dat geld in concrete hulp: meer opvangplekken, preventie en ondersteuning. De veiligheid van vrouwen moet de prioriteit zijn. Het moet de normaal zijn. #99woorden\n\n",
+				"date_published": "2025-08-25T17:37:41+02:00",
+				"url": "https://micro.mjanssen.nl/2025/08/25/veiligheid-koop-je-niet-met.html",
+				"tags": ["Schrijfsels","Longform","99woorden"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2025/08/20/geduld-de-wetenschap-kauwt-erop.html",
+				"title": "✏️ Geduld, de Wetenschap Kauwt Erop.",
+				"content_html": "<p>Wetenschappers staan voor een doorbraak: ze onderzoeken eindelijk of het jaarlijks slikken van 30.000 stukjes microplastic uit kauwgom mogelijk ongezond is. Een gedurfde stelling. Het basismateriaal, een neefje van de houtlijm in uw schuur en het rubber van uw fietsband, wordt nu uiterst grondig geanalyseerd.</p>\n<p>Terwijl deze academische helden van het lab decennia lang data verzamelen, kauwen wij vrolijk verder. Wie weet ontdekken we onvermoede voordelen. Een intern anti-leksysteem? Een permanente, innerlijke hechting, net als die lijm? De spanning is letterlijk om op te kauwen. Een Nobelprijs voor het aantonen van het overduidelijke ligt vast in het verschiet. #99woorden</p>\n",
+				"content_text": "Wetenschappers staan voor een doorbraak: ze onderzoeken eindelijk of het jaarlijks slikken van 30.000 stukjes microplastic uit kauwgom mogelijk ongezond is. Een gedurfde stelling. Het basismateriaal, een neefje van de houtlijm in uw schuur en het rubber van uw fietsband, wordt nu uiterst grondig geanalyseerd.\n\nTerwijl deze academische helden van het lab decennia lang data verzamelen, kauwen wij vrolijk verder. Wie weet ontdekken we onvermoede voordelen. Een intern anti-leksysteem? Een permanente, innerlijke hechting, net als die lijm? De spanning is letterlijk om op te kauwen. Een Nobelprijs voor het aantonen van het overduidelijke ligt vast in het verschiet. #99woorden\n\n",
+				"date_published": "2025-08-20T23:45:07+02:00",
+				"url": "https://micro.mjanssen.nl/2025/08/20/geduld-de-wetenschap-kauwt-erop.html",
+				"tags": ["Schrijfsels","Longform","99woorden"]
+			},
 			{
 				"id": "http://marc0janssen.micro.blog/2025/08/17/houd-jij-nog-van-mij.html",
 				
@@ -1809,7 +1827,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2025/04/18/223244.html",
 				
-				"content_html": "<!-- raw HTML omitted -->\n",
+				"content_html": "<img src=\"https://micro.mjanssen.nl/uploads/2025/1b71711636.png\" width=\"600\" height=\"400\" alt=\"\">\n",
 				"content_text": "<img src=\"https://micro.mjanssen.nl/uploads/2025/1b71711636.png\" width=\"600\" height=\"400\" alt=\"\">\n",
 				"date_published": "2025-04-18T22:32:44+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/18/223244.html",
@@ -1854,7 +1872,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2025/04/09/zouden-we-snel-kunnen-forwarden.html",
 				
-				"content_html": "<p>Zouden we snel kunnen forwarden naar oud&amp;nieuw 2026-2027 alsjeblieft??</p>\n<!-- raw HTML omitted -->\n",
+				"content_html": "<p>Zouden we snel kunnen forwarden naar oud&amp;nieuw 2026-2027 alsjeblieft??</p>\n<img src=\"https://micro.mjanssen.nl/uploads/2025/3e26c2fb-5e42-442d-a9b8-b212b2a692ad.png\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"content_text": "Zouden we snel kunnen forwarden naar oud&nieuw 2026-2027 alsjeblieft??\n\n<img src=\"https://micro.mjanssen.nl/uploads/2025/3e26c2fb-5e42-442d-a9b8-b212b2a692ad.png\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2025-04-09T07:57:49+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/09/zouden-we-snel-kunnen-forwarden.html",
@@ -1863,7 +1881,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2025/04/08/in-other-tidings-across-certain.html",
 				
-				"content_html": "<p>In other tidings, across certain regions of the globe&hellip;&hellip;&hellip;&hellip;.</p>\n<!-- raw HTML omitted -->\n",
+				"content_html": "<p>In other tidings, across certain regions of the globe&hellip;&hellip;&hellip;&hellip;.</p>\n<img src=\"https://micro.mjanssen.nl/uploads/2025/d2e1b4f491.png\" width=\"600\" height=\"400\" alt=\"\">\n",
 				"content_text": "In other tidings, across certain regions of the globe.............\r\n\n\n<img src=\"https://micro.mjanssen.nl/uploads/2025/d2e1b4f491.png\" width=\"600\" height=\"400\" alt=\"\">\n",
 				"date_published": "2025-04-08T21:57:50+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/08/in-other-tidings-across-certain.html",
@@ -1872,7 +1890,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2025/04/08/the-new-reputation-of-the.html",
 				
-				"content_html": "<p>The new Reputation of the old leader of the &ldquo;free&rdquo; world.</p>\n<!-- raw HTML omitted -->\n",
+				"content_html": "<p>The new Reputation of the old leader of the &ldquo;free&rdquo; world.</p>\n<img src=\"https://micro.mjanssen.nl/uploads/2025/untitled.png\" width=\"512\" height=\"293\" alt=\"\">\n",
 				"content_text": "The new Reputation of the old leader of the \"free\" world.\n\n<img src=\"https://micro.mjanssen.nl/uploads/2025/untitled.png\" width=\"512\" height=\"293\" alt=\"\">\n",
 				"date_published": "2025-04-08T21:24:28+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/08/the-new-reputation-of-the.html",
@@ -2124,7 +2142,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2024/12/14/i-cant-imagine.html",
 				
-				"content_html": "<p>I can’t imagine anyone not wanting a nice 16 year old lagavulin.</p>\n<p>Cheers 🥃</p>\n<!-- raw HTML omitted -->\n",
+				"content_html": "<p>I can’t imagine anyone not wanting a nice 16 year old lagavulin.</p>\n<p>Cheers 🥃</p>\n<img src=\"https://micro.mjanssen.nl/uploads/2024/f3a8dbe4e5.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
 				"content_text": "I can’t imagine anyone not wanting a nice 16 year old lagavulin. \n\nCheers 🥃 \n\n<img src=\"https://micro.mjanssen.nl/uploads/2024/f3a8dbe4e5.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
 				"date_published": "2024-12-14T22:06:52+02:00",
 				"url": "https://micro.mjanssen.nl/2024/12/14/i-cant-imagine.html",
@@ -2205,7 +2223,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2024/12/01/vanmiddag-spontaan-gaan.html",
 				
-				"content_html": "<p>Vanmiddag spontaan gaan lunchen in de stad na de wandeling 🚶‍♀️ 🥪</p>\n<!-- raw HTML omitted -->\n",
+				"content_html": "<p>Vanmiddag spontaan gaan lunchen in de stad na de wandeling 🚶‍♀️ 🥪</p>\n<img src=\"https://micro.mjanssen.nl/uploads/2024/102bae1c09.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
 				"content_text": "Vanmiddag spontaan gaan lunchen in de stad na de wandeling 🚶‍♀️ 🥪\n\n<img src=\"https://micro.mjanssen.nl/uploads/2024/102bae1c09.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
 				"date_published": "2024-12-01T01:00:19+02:00",
 				"url": "https://micro.mjanssen.nl/2024/12/01/vanmiddag-spontaan-gaan.html",
@@ -2214,7 +2232,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2024/11/30/zaterdagochtend-wandeling-in.html",
 				
-				"content_html": "<p>Zaterdagochtend wandeling in Tiel. 📷🚶🏽‍♂️</p>\n<p>#10minutesfromhome</p>\n<p>Inundatiekanaal Tiel</p>\n<!-- raw HTML omitted -->\n",
+				"content_html": "<p>Zaterdagochtend wandeling in Tiel. 📷🚶🏽‍♂️</p>\n<p>#10minutesfromhome</p>\n<p>Inundatiekanaal Tiel</p>\n<img src=\"https://micro.mjanssen.nl/uploads/2024/b458ce3599.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
 				"content_text": "Zaterdagochtend wandeling in Tiel. 📷🚶🏽‍♂️\n\n#10minutesfromhome\n\nInundatiekanaal Tiel\n\n<img src=\"https://micro.mjanssen.nl/uploads/2024/b458ce3599.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
 				"date_published": "2024-11-30T18:31:07+02:00",
 				"url": "https://micro.mjanssen.nl/2024/11/30/zaterdagochtend-wandeling-in.html",
@@ -2232,7 +2250,7 @@
 			{
 				"id": "http://marc0janssen.micro.blog/2024/11/29/this-year-old.html",
 				
-				"content_html": "<p>This 17 year old lady is fast asleep. 🐈</p>\n<!-- raw HTML omitted -->\n",
+				"content_html": "<p>This 17 year old lady is fast asleep. 🐈</p>\n<img src=\"https://marc0janssen.micro.blog/uploads/2024/image.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"content_text": "This 17 year old lady is fast asleep. 🐈\n\n<img src=\"https://marc0janssen.micro.blog/uploads/2024/image.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2024-11-30T00:32:26+02:00",
 				"url": "https://micro.mjanssen.nl/2024/11/29/this-year-old.html",
