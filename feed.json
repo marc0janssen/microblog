@@ -7,6 +7,15 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/02/24/gitzy-is-now-on-testflight.html",
+				
+				"content_html": "<p>🚀 Gitzy is now on TestFlight!\nA modern, native iOS Git client with a powerful visual commit graph, smooth branch management, and reliable push/pull support. Built to make Git clearer and more intuitive on iPhone &amp; iPad.</p>\n<p>Join &amp; share feedback: <a href=\"https://testflight.apple.com/join/SB16NCfr\">https://testflight.apple.com/join/SB16NCfr</a></p>\n",
+				"content_text": "🚀 Gitzy is now on TestFlight!\nA modern, native iOS Git client with a powerful visual commit graph, smooth branch management, and reliable push/pull support. Built to make Git clearer and more intuitive on iPhone & iPad.\n\nJoin & share feedback: [https://testflight.apple.com/join/SB16NCfr](https://testflight.apple.com/join/SB16NCfr)\n\n",
+				"date_published": "2026-02-24T22:30:48+01:00",
+				"url": "https://micro.mjanssen.nl/2026/02/24/gitzy-is-now-on-testflight.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/02/13/i-am-looking-for-betatesters.html",
 				
 				"content_html": "<p>I am looking for BETA-testers for Check&rsquo;d.</p>\n<p><a href=\"https://micro.mjanssen.nl/checkd/\">micro.mjanssen.nl/checkd/</a></p>\n<p>Check&rsquo;d is your Chess app for</p>\n<ul>\n<li>Playing against Mr. No-Patzer</li>\n<li>Playing against your friends via iMessage</li>\n<li>Playing the daily puzzle</li>\n</ul>\n<p>Join here:\n<a href=\"https://testflight.apple.com/join/8Fcrkm51\">testflight.apple.com/join/8Fcr&hellip;</a></p>\n",
