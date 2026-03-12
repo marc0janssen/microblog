@@ -7,6 +7,15 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/03/02/gitzy-is-now-on-testflight.html",
+				
+				"content_html": "<p>🚀 Gitzy is now on TestFlight! A modern, native iOS Git client with a powerful visual commit graph, smooth branch management, and reliable push/pull support. Built to make Git clearer and more intuitive on iPhone &amp; iPad.</p>\n<p>Join &amp; share feedback: <a href=\"https://testflight.apple.com/join/SB16NCfr\">testflight.apple.com/join/SB16&hellip;</a></p>\n",
+				"content_text": "🚀 Gitzy is now on TestFlight! A modern, native iOS Git client with a powerful visual commit graph, smooth branch management, and reliable push/pull support. Built to make Git clearer and more intuitive on iPhone & iPad.\n\nJoin & share feedback: [testflight.apple.com/join/SB16...](https://testflight.apple.com/join/SB16NCfr)\n",
+				"date_published": "2026-03-02T14:02:12+01:00",
+				"url": "https://micro.mjanssen.nl/2026/03/02/gitzy-is-now-on-testflight.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/02/24/gitzy-is-now-on-testflight.html",
 				
 				"content_html": "<p>🚀 Gitzy is now on TestFlight!\nA modern, native iOS Git client with a powerful visual commit graph, smooth branch management, and reliable push/pull support. Built to make Git clearer and more intuitive on iPhone &amp; iPad.</p>\n<p>Join &amp; share feedback: <a href=\"https://testflight.apple.com/join/SB16NCfr\">https://testflight.apple.com/join/SB16NCfr</a></p>\n",
