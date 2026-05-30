@@ -7,6 +7,15 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/05/28/durable-links-between-everything-you.html",
+				"title": "Durable links between everything you work on",
+				"content_html": "<p>Capture files, web pages, mail, notes, PDF pages, and calendar items in one keystroke. Connect them with relations, search instantly, and open them again with stable linkano:// links that survive renames and moves.</p>\n<p><a href=\"https://www.mjanssen.nl/linkano/\">www.mjanssen.nl/linkano/</a></p>\n",
+				"content_text": "Capture files, web pages, mail, notes, PDF pages, and calendar items in one keystroke. Connect them with relations, search instantly, and open them again with stable linkano:// links that survive renames and moves.\n\n[www.mjanssen.nl/linkano/](https://www.mjanssen.nl/linkano/)\n",
+				"date_published": "2026-05-28T09:01:15+02:00",
+				"url": "https://micro.mjanssen.nl/2026/05/28/durable-links-between-everything-you.html",
+				"tags": ["Longform"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/04/27/wanna-try-a-new-kid.html",
 				
 				"content_html": "<p>Wanna try a new kid on the block for Universal Clipboard Management?</p>\n<p>Try Clipano for Mac en iPhone./iPad in the testflight phase.</p>\n<p><a href=\"https://testflight.apple.com/join/D6HShsM5\">testflight.apple.com/join/D6HS&hellip;</a></p>\n",
