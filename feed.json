@@ -7,6 +7,15 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/05/31/anyone-using-the-searchengine-kagi.html",
+				
+				"content_html": "<p>Anyone using the search-engine Kagi?? <a href=\"http://www.kagi.com\">www.kagi.com</a>..\nANy thoughts on their product?</p>\n",
+				"content_text": "Anyone using the search-engine Kagi?? www.kagi.com.. \nANy thoughts on their product?\n",
+				"date_published": "2026-05-31T12:33:18+02:00",
+				"url": "https://micro.mjanssen.nl/2026/05/31/anyone-using-the-searchengine-kagi.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/05/28/durable-links-between-everything-you.html",
 				"title": "Durable links between everything you work on",
 				"content_html": "<p>Capture files, web pages, mail, notes, PDF pages, and calendar items in one keystroke. Connect them with relations, search instantly, and open them again with stable linkano:// links that survive renames and moves.</p>\n<p><a href=\"https://www.mjanssen.nl/linkano/\">www.mjanssen.nl/linkano/</a></p>\n",
