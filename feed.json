@@ -7,12 +7,30 @@
 	"items": [
 		
 			{
-				"id": "http://marc0janssen.micro.blog/2026/06/06/165534.html",
+				"id": "http://marc0janssen.micro.blog/2026/06/07/thats.html",
 				
-				"content_html": "<p>Zojuist even met de eega een hapjes en drankje in de stad gedaan. Dat zijn toch altijd leuke dingen voor de mensen. Hmmmm</p>\n",
-				"content_text": "Zojuist even met de eega een hapjes en drankje in de stad gedaan. Dat zijn toch altijd leuke dingen voor de mensen. Hmmmm\n",
-				"date_published": "2026-06-06T16:55:34+02:00",
-				"url": "https://micro.mjanssen.nl/2026/06/06/165534.html",
+				"content_html": "<p>That’s 3 ☕️☕️☕️</p>\n",
+				"content_text": "That’s 3 ☕️☕️☕️\n",
+				"date_published": "2026-06-07T12:34:04+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/07/thats.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/07/number-two.html",
+				
+				"content_html": "<p>Number two ☕️</p>\n",
+				"content_text": "Number two ☕️\n",
+				"date_published": "2026-06-07T12:19:10+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/07/number-two.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/07/first-coffee-of-the-day.html",
+				
+				"content_html": "<p>First coffee of the day. ☕️</p>\n",
+				"content_text": "First coffee of the day. ☕️\n",
+				"date_published": "2026-06-07T11:39:20+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/07/first-coffee-of-the-day.html",
 				"tags": ["Microposts"]
 			},
 			{
@@ -58,6 +76,15 @@
 				"content_text": "Tonight was risotto night. 🍽️\n\n<img src=\"https://micro.mjanssen.nl/uploads/2026/0a7a545d25.jpg\" width=\"450\" height=\"600\" alt=\"A bowl of risotto topped with sautéed mushrooms and yellow bell peppers is placed on a patterned tablecloth.\">\n",
 				"date_published": "2026-06-05T21:21:43+02:00",
 				"url": "https://micro.mjanssen.nl/2026/06/05/tonight-was-risotto-night.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/05/zo-ik-ga-zo-de.html",
+				
+				"content_html": "<p>Zo. Ik ga zo de risotto voorbereiden en in elkaar zetten. Daar wordt de missus blij van.</p>\n",
+				"content_text": "Zo. Ik ga zo de risotto voorbereiden en in elkaar zetten. Daar wordt de missus blij van. \n",
+				"date_published": "2026-06-05T17:06:28+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/05/zo-ik-ga-zo-de.html",
 				"tags": ["Microposts"]
 			},
 			{
@@ -2125,7 +2152,7 @@
 				"id": "http://marc0janssen.micro.blog/2025/04/18/223244.html",
 				
 				"content_html": "<!-- raw HTML omitted -->\n",
-				"content_text": "<img src=\"https://micro.mjanssen.nl/uploads/2025/1b71711636.png\" width=\"600\" height=\"400\" alt=\"\">\n",
+				"content_text": "<img src=\"uploads/2025/1b71711636.png\" width=\"600\" height=\"400\" alt=\"\">\n",
 				"date_published": "2025-04-18T22:32:44+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/18/223244.html",
 				"tags": ["Microposts"]
@@ -2170,7 +2197,7 @@
 				"id": "http://marc0janssen.micro.blog/2025/04/09/zouden-we-snel-kunnen-forwarden.html",
 				
 				"content_html": "<p>Zouden we snel kunnen forwarden naar oud&amp;nieuw 2026-2027 alsjeblieft??</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Zouden we snel kunnen forwarden naar oud&nieuw 2026-2027 alsjeblieft??\n\n<img src=\"https://micro.mjanssen.nl/uploads/2025/3e26c2fb-5e42-442d-a9b8-b212b2a692ad.png\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "Zouden we snel kunnen forwarden naar oud&nieuw 2026-2027 alsjeblieft??\n\n<img src=\"uploads/2025/3e26c2fb-5e42-442d-a9b8-b212b2a692ad.png\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2025-04-09T07:57:49+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/09/zouden-we-snel-kunnen-forwarden.html",
 				"tags": ["Microposts"]
@@ -2179,7 +2206,7 @@
 				"id": "http://marc0janssen.micro.blog/2025/04/08/in-other-tidings-across-certain.html",
 				
 				"content_html": "<p>In other tidings, across certain regions of the globe&hellip;&hellip;&hellip;&hellip;.</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "In other tidings, across certain regions of the globe.............\r\n\n\n<img src=\"https://micro.mjanssen.nl/uploads/2025/d2e1b4f491.png\" width=\"600\" height=\"400\" alt=\"\">\n",
+				"content_text": "In other tidings, across certain regions of the globe.............\r\n\n\n<img src=\"uploads/2025/d2e1b4f491.png\" width=\"600\" height=\"400\" alt=\"\">\n",
 				"date_published": "2025-04-08T21:57:50+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/08/in-other-tidings-across-certain.html",
 				"tags": ["Microposts"]
@@ -2188,7 +2215,7 @@
 				"id": "http://marc0janssen.micro.blog/2025/04/08/the-new-reputation-of-the.html",
 				
 				"content_html": "<p>The new Reputation of the old leader of the &ldquo;free&rdquo; world.</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "The new Reputation of the old leader of the \"free\" world.\n\n<img src=\"https://micro.mjanssen.nl/uploads/2025/untitled.png\" width=\"512\" height=\"293\" alt=\"\">\n",
+				"content_text": "The new Reputation of the old leader of the \"free\" world.\n\n<img src=\"uploads/2025/untitled.png\" width=\"512\" height=\"293\" alt=\"\">\n",
 				"date_published": "2025-04-08T21:24:28+02:00",
 				"url": "https://micro.mjanssen.nl/2025/04/08/the-new-reputation-of-the.html",
 				"tags": ["Microposts"]
@@ -2440,7 +2467,7 @@
 				"id": "http://marc0janssen.micro.blog/2024/12/14/i-cant-imagine.html",
 				
 				"content_html": "<p>I can’t imagine anyone not wanting a nice 16 year old lagavulin.</p>\n<p>Cheers 🥃</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "I can’t imagine anyone not wanting a nice 16 year old lagavulin. \n\nCheers 🥃 \n\n<img src=\"https://micro.mjanssen.nl/uploads/2024/f3a8dbe4e5.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
+				"content_text": "I can’t imagine anyone not wanting a nice 16 year old lagavulin. \n\nCheers 🥃 \n\n<img src=\"uploads/2024/f3a8dbe4e5.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
 				"date_published": "2024-12-14T22:06:52+02:00",
 				"url": "https://micro.mjanssen.nl/2024/12/14/i-cant-imagine.html",
 				"tags": ["Microposts"]
@@ -2521,7 +2548,7 @@
 				"id": "http://marc0janssen.micro.blog/2024/12/01/vanmiddag-spontaan-gaan.html",
 				
 				"content_html": "<p>Vanmiddag spontaan gaan lunchen in de stad na de wandeling 🚶‍♀️ 🥪</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Vanmiddag spontaan gaan lunchen in de stad na de wandeling 🚶‍♀️ 🥪\n\n<img src=\"https://micro.mjanssen.nl/uploads/2024/102bae1c09.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
+				"content_text": "Vanmiddag spontaan gaan lunchen in de stad na de wandeling 🚶‍♀️ 🥪\n\n<img src=\"uploads/2024/102bae1c09.jpg\" width=\"450\" height=\"600\" alt=\"\">\n",
 				"date_published": "2024-12-01T01:00:19+02:00",
 				"url": "https://micro.mjanssen.nl/2024/12/01/vanmiddag-spontaan-gaan.html",
 				"tags": ["Microposts"]
@@ -2530,7 +2557,7 @@
 				"id": "http://marc0janssen.micro.blog/2024/11/30/zaterdagochtend-wandeling-in.html",
 				
 				"content_html": "<p>Zaterdagochtend wandeling in Tiel. 📷🚶🏽‍♂️</p>\n<p>#10minutesfromhome</p>\n<p>Inundatiekanaal Tiel</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Zaterdagochtend wandeling in Tiel. 📷🚶🏽‍♂️\n\n#10minutesfromhome\n\nInundatiekanaal Tiel\n\n<img src=\"https://micro.mjanssen.nl/uploads/2024/b458ce3599.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
+				"content_text": "Zaterdagochtend wandeling in Tiel. 📷🚶🏽‍♂️\n\n#10minutesfromhome\n\nInundatiekanaal Tiel\n\n<img src=\"uploads/2024/b458ce3599.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
 				"date_published": "2024-11-30T18:31:07+02:00",
 				"url": "https://micro.mjanssen.nl/2024/11/30/zaterdagochtend-wandeling-in.html",
 				"tags": ["Microposts"]
@@ -2548,7 +2575,7 @@
 				"id": "http://marc0janssen.micro.blog/2024/11/29/this-year-old.html",
 				
 				"content_html": "<p>This 17 year old lady is fast asleep. 🐈</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "This 17 year old lady is fast asleep. 🐈\n\n<img src=\"https://marc0janssen.micro.blog/uploads/2024/image.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
+				"content_text": "This 17 year old lady is fast asleep. 🐈\n\n<img src=\"uploads/2024/image.jpg\" width=\"600\" height=\"600\" alt=\"\">\n",
 				"date_published": "2024-11-30T00:32:26+02:00",
 				"url": "https://micro.mjanssen.nl/2024/11/29/this-year-old.html",
 				"tags": ["Microposts"]
