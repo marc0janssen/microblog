@@ -7,12 +7,21 @@
 	"items": [
 		
 			{
-				"id": "http://marc0janssen.micro.blog/2026/06/08/im-creating-a-client-for.html",
+				"id": "http://marc0janssen.micro.blog/2026/06/09/qwerty.html",
 				
-				"content_html": "<p>I’m creating a client for iOS to post on micro.blog. Anyone interested in checking it out in TestFlight??</p>\n",
-				"content_text": "I’m creating a client for iOS to post on micro.blog. Anyone interested in checking it out in TestFlight??\n",
-				"date_published": "2026-06-08T18:00:06+02:00",
-				"url": "https://micro.mjanssen.nl/2026/06/08/im-creating-a-client-for.html",
+				"content_html": "<p>Qwerty</p>\n",
+				"content_text": "Qwerty\n",
+				"date_published": "2026-06-09T17:12:02+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/09/qwerty.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/09/for-people-in-the-eu.html",
+				
+				"content_html": "<p>For people in the EU there is not much meat on the “iOS27” bones, is there?</p>\n<p>Only the efficiency on the OSes.  The whole AI part which was 99.9% of the presentation, is for now banned in Brussels. 🤯</p>\n",
+				"content_text": "For people in the EU there is not much meat on the “iOS27” bones, is there?\n\nOnly the efficiency on the OSes.  The whole AI part which was 99.9% of the presentation, is for now banned in Brussels. 🤯\n",
+				"date_published": "2026-06-09T14:56:53+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/09/for-people-in-the-eu.html",
 				"tags": ["Microposts"]
 			},
 			{
