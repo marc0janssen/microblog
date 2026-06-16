@@ -7,6 +7,15 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/06/16/i-am-still-open-voor.html",
+				
+				"content_html": "<p>I am still open voor people who want to test drive a new app for micro.blog. 📝</p>\n<p><a href=\"https://testflight.apple.com/join/3Jn89MJv\">testflight.apple.com/join/3Jn8&hellip;</a></p>\n",
+				"content_text": "I am still open voor people who want to test drive a new app for micro.blog. 📝\n\n[testflight.apple.com/join/3Jn8...](https://testflight.apple.com/join/3Jn89MJv)\n",
+				"date_published": "2026-06-16T19:12:06+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/16/i-am-still-open-voor.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/06/15/aan-de-chaperone-maar-het.html",
 				
 				"content_html": "<p>Aan de chaperone, maar het glaasje is al leeg. #zinder #tiel</p>\n<!-- raw HTML omitted -->\n",
@@ -46,7 +55,7 @@
 				"id": "http://marc0janssen.micro.blog/2026/06/14/mrs-cotton-her-sunday-morning.html",
 				
 				"content_html": "<p>Mrs. Cotton, her Sunday morning beauty sleep. 🐱</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Mrs. Cotton, her Sunday morning beauty sleep. 🐱\n\n<img src=\"uploads/2026/be7bb323-c6ab-4e4a-932d-0cde9a7d5651-9a078003.jpg\" width=\"600\" height=\"450\" alt=\"Mrs. Cotton, her Sunday morning beauty sleep. 🐱\">\n",
+				"content_text": "Mrs. Cotton, her Sunday morning beauty sleep. 🐱\n\n<img src=\"https://micro.mjanssen.nl/uploads/2026/be7bb323-c6ab-4e4a-932d-0cde9a7d5651-9a078003.jpg\" width=\"600\" height=\"450\" alt=\"Mrs. Cotton, her Sunday morning beauty sleep. 🐱\">\n",
 				"date_published": "2026-06-14T09:47:47+02:00",
 				"url": "https://micro.mjanssen.nl/2026/06/14/mrs-cotton-her-sunday-morning.html",
 				"tags": ["Microposts"]
