@@ -7,6 +7,33 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/06/20/is-het-voor-iedereen-nog.html",
+				
+				"content_html": "<p>Is het voor iedereen nog vol te houden in de Nederlandse subtropen?</p>\n",
+				"content_text": "Is het voor iedereen nog vol te houden in de Nederlandse subtropen?\n",
+				"date_published": "2026-06-20T10:05:59+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/20/is-het-voor-iedereen-nog.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/19/trapped-cat.html",
+				"title": "🐱Trapped cat",
+				"content_html": "<p>Well. It’s hot 🔥 again now in Holland and I mean like hot from 22’C on day1 to 34’C the next day. Not nice and not normal.</p>\n<p>This morning I was scheduled for the gym to work out but I decided to reschedule with this heat and do some odd jobs around the house. So I did some weeding in the garden and some quick cuttings in the green before the temperature went really up.</p>\n<p>After the cutting I got the leaf-rake out and started cleaning the area and accidentally dropping it against the windows , where my loving cat was between glass pots and the windows.</p>\n<p>I leave it to your imagination what happened afterwards and how quickly I was inside checking Mrs. Cotton her paws. 🐾 📝</p>\n",
+				"content_text": "Well. It’s hot 🔥 again now in Holland and I mean like hot from 22’C on day1 to 34’C the next day. Not nice and not normal. \n\nThis morning I was scheduled for the gym to work out but I decided to reschedule with this heat and do some odd jobs around the house. So I did some weeding in the garden and some quick cuttings in the green before the temperature went really up.\n\nAfter the cutting I got the leaf-rake out and started cleaning the area and accidentally dropping it against the windows , where my loving cat was between glass pots and the windows. \n\nI leave it to your imagination what happened afterwards and how quickly I was inside checking Mrs. Cotton her paws. 🐾 📝\n",
+				"date_published": "2026-06-19T16:56:58+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/19/trapped-cat.html",
+				"tags": ["Longform"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/19/it-is-hot.html",
+				
+				"content_html": "<p>It is hot 🔥</p>\n",
+				"content_text": "It is hot 🔥\n",
+				"date_published": "2026-06-19T16:15:16+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/19/it-is-hot.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/06/18/and-joe-joe-is-but.html",
 				
 				"content_html": "<p>📺 and Joe, Joe is 30 but identifies as 22 🙃</p>\n<p>The Traitors NZ Season 2.</p>\n",
@@ -28,7 +55,7 @@
 				"id": "http://marc0janssen.micro.blog/2026/06/18/denim.html",
 				
 				"content_html": "<p>Denim 📷</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Denim 📷\n\n<img src=\"uploads/2026/2809afb9-8f32-4a5f-8b19-d7243fca4185-f3a09559.jpg\" width=\"450\" height=\"600\" alt=\"Denim 📷\">\n",
+				"content_text": "Denim 📷\n\n<img src=\"https://micro.mjanssen.nl/uploads/2026/2809afb9-8f32-4a5f-8b19-d7243fca4185-f3a09559.jpg\" width=\"450\" height=\"600\" alt=\"Denim 📷\">\n",
 				"date_published": "2026-06-18T19:18:58+02:00",
 				"url": "https://micro.mjanssen.nl/2026/06/18/denim.html",
 				"tags": ["Microposts"]
