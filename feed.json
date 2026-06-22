@@ -7,6 +7,33 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/06/22/hi-there-is-a-new.html",
+				
+				"content_html": "<p>Hi. 👋 there is a new kid in town. Microsphere.\nIt is a third party iOS client for micro.blog.</p>\n<p>You might like it. Try it here. It is free. No paywall. All is free and open. If you like there is an optional tip for me. But no must. 📝🚀 enjoy. Leave a review.</p>\n<p><a href=\"https://micro.mjanssen.nl/microsphere/\">micro.mjanssen.nl/microsphe&hellip;</a></p>\n",
+				"content_text": "Hi. 👋 there is a new kid in town. Microsphere. \nIt is a third party iOS client for micro.blog. \n\nYou might like it. Try it here. It is free. No paywall. All is free and open. If you like there is an optional tip for me. But no must. 📝🚀 enjoy. Leave a review. \n\n[micro.mjanssen.nl/microsphe...](https://micro.mjanssen.nl/microsphere/)\n",
+				"date_published": "2026-06-22T18:09:57+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/22/hi-there-is-a-new.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/21/barbee-less-clutter-more-focus.html",
+				"title": "👾🐝  Barbee -     Less Clutter, More Focus",
+				"content_html": "<p>I have been using an app for a long time called Bartender for the Mac.</p>\n<p>Bartender is a Mac app that helps you organize and control your menu bar icons. It lets you hide, rearrange, and quickly access menu bar items, keeping your menu bar clean and uncluttered while still giving you access to everything when you need it.</p>\n<p>I hold licenses since version 3 and when I switched to Setapp, I continued using it until the current version 6. I noticed that since version 5 (for me) the became very unstable. I owned a M1max and now I own a M5Pro. Version 6 have never ran error free for me. Very buggy and at times I just disabled the app, because then I had easier access to menubar. It defeated its own purpose.</p>\n<p>A bit disappointed with Bartender I started to look around for an alternative. I found one the app Barbee. Sold in the Mac AppStore. My impression is that the developers of Barbee took a good look at Bartender. But then much more stable.  Since I use Barbee my out-of-the-way menu-icon are always accessible.</p>\n<p>Barbee is lighter, more modern, and focuses on automatically cleaning up a crowded menu bar. Bartender offers more advanced customization and controls, but for many users Barbee is simpler, faster, and easier to use.</p>\n<p>And in my case Barbee is more stable.</p>\n",
+				"content_text": "I have been using an app for a long time called Bartender for the Mac. \n\nBartender is a Mac app that helps you organize and control your menu bar icons. It lets you hide, rearrange, and quickly access menu bar items, keeping your menu bar clean and uncluttered while still giving you access to everything when you need it.\n\nI hold licenses since version 3 and when I switched to Setapp, I continued using it until the current version 6. I noticed that since version 5 (for me) the became very unstable. I owned a M1max and now I own a M5Pro. Version 6 have never ran error free for me. Very buggy and at times I just disabled the app, because then I had easier access to menubar. It defeated its own purpose.\n\nA bit disappointed with Bartender I started to look around for an alternative. I found one the app Barbee. Sold in the Mac AppStore. My impression is that the developers of Barbee took a good look at Bartender. But then much more stable.  Since I use Barbee my out-of-the-way menu-icon are always accessible. \n\nBarbee is lighter, more modern, and focuses on automatically cleaning up a crowded menu bar. Bartender offers more advanced customization and controls, but for many users Barbee is simpler, faster, and easier to use. \n\nAnd in my case Barbee is more stable.\n",
+				"date_published": "2026-06-21T22:59:15+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/21/barbee-less-clutter-more-focus.html",
+				"tags": ["Longform"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/21/resuming-the-traitors-nz-season.html",
+				
+				"content_html": "<p>📺 resuming The Traitors NZ Season3</p>\n",
+				"content_text": "📺 resuming The Traitors NZ Season3\n",
+				"date_published": "2026-06-21T20:53:07+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/21/resuming-the-traitors-nz-season.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/06/20/fileside-a-modern-workspace-for.html",
 				"title": "📝 📁 Fileside: A modern workspace for your files.",
 				"content_html": "<p>I have this thing with Black Friday and indie MacOS software. I browse those lists, which are made by likeminded people, and hope to find a nice catch.</p>\n<p>Last BF I came across a nice app called Fileside V1. Fileside transforms file management into a focused workspace. View multiple folders side by side, navigate instantly, and keep your projects organized without juggling countless windows.</p>\n<p>What I really like is that I can save workspaces. Panes with the folders you need in a certain project of activity. It helps me to switch from one coding project to an another.</p>\n<p>Yesterday V2 of Fileside was released.</p>\n<ul>\n<li>Completely Rebuilt Architecture – A modern foundation designed for improved performance, stability, and future expansion.</li>\n<li>Thumbnail Grid View – A new gallery-style view that makes browsing photos, videos, and other visual content much faster and more intuitive.</li>\n<li>Redesigned Layout Management – Workspaces are automatically saved and easier to organize, making it simple to return to complex file setups.</li>\n<li>Non-Blocking File Transfers – Copying and moving files runs in the background, allowing you to continue working without interruptions.</li>\n<li>Expanded Customization Options – More settings and configuration choices let you tailor Fileside to your personal workflow and preferences.</li>\n</ul>\n<p>I just really like this file manager. Of course there are things it could better. But the developer acknowledges this and says it wil be added missing features as they work along.</p>\n<p>Just to be clear, I have no affiliation with the Fileside team. I’m simply a fan of the product and genuinely think it’s a great piece of software.\n📝</p>\n<p><a href=\"https://www.fileside.app/\">www.fileside.app</a></p>\n",
@@ -91,7 +118,7 @@
 				"id": "http://marc0janssen.micro.blog/2026/06/18/seashells.html",
 				
 				"content_html": "<p>Seashells</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Seashells\n\n<img src=\"https://micro.mjanssen.nl/uploads/2026/3705a5a2-dae2-4e8a-8749-de42d99e4a2b-3447a983.jpg\" width=\"450\" height=\"600\" alt=\"Seashells\">\n",
+				"content_text": "Seashells\n\n<img src=\"uploads/2026/3705a5a2-dae2-4e8a-8749-de42d99e4a2b-3447a983.jpg\" width=\"450\" height=\"600\" alt=\"Seashells\">\n",
 				"date_published": "2026-06-18T15:17:21+02:00",
 				"url": "https://micro.mjanssen.nl/2026/06/18/seashells.html",
 				"tags": ["Microposts"]
@@ -2767,6 +2794,15 @@
 				"content_text": "It is a beautiful sunny saturday morning. A small coffee☕️, Macbook💻, sitting in the sun☀ behind the windows. Feels like an early spring.\r\n\r\nHave a great weekend, you all.\r\n",
 				"date_published": "2025-03-08T10:20:21+02:00",
 				"url": "https://micro.mjanssen.nl/2025/03/08/it-is-a-beautiful-sunny.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2025/03/08/it-is-a-beutiful-sunny.html",
+				
+				"content_html": "<p>It is a beutiful sunny saturday morning. A small coffee☕️, Macbook💻, sitting in the sun☀ behind the windows. Feels like an early spring.</p>\n<p>Have a great weekend, you all.</p>\n",
+				"content_text": "It is a beutiful sunny saturday morning. A small coffee☕️, Macbook💻, sitting in the sun☀ behind the windows. Feels like an early spring. \r\n\r\nHave a great weekend, you all.\n",
+				"date_published": "2025-03-08T10:15:47+02:00",
+				"url": "https://micro.mjanssen.nl/2025/03/08/it-is-a-beutiful-sunny.html",
 				"tags": ["Microposts"]
 			},
 			{
