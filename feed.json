@@ -7,6 +7,51 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/06/23/lets-get-another-nice-coffee.html",
+				
+				"content_html": "<p>Let’s get another nice coffee ☕️\nCan’t drink coffee enough now.\nBefore you know it, it’s banned.</p>\n",
+				"content_text": "Let’s get another nice coffee ☕️ \nCan’t drink coffee enough now. \nBefore you know it, it’s banned.\n",
+				"date_published": "2026-06-23T09:18:08+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/23/lets-get-another-nice-coffee.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/23/nog-gekker-ik-zit-hier.html",
+				
+				"content_html": "<p>Nog gekker. Ik zit hier onder een kleedje met een woonkamer in de 25’C+ en de koele lucht uit de tuin van 18’C</p>\n<p>Ik heb het gewoon koud.</p>\n",
+				"content_text": "Nog gekker. Ik zit hier onder een kleedje met een woonkamer in de 25’C+ en de koele lucht uit de tuin van 18’C \n\nIk heb het gewoon koud.\n",
+				"date_published": "2026-06-23T08:46:43+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/23/nog-gekker-ik-zit-hier.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/23/ik-heb-het-gewoon-kou.html",
+				
+				"content_html": "<p>Ik heb het gewoon kou nou. 🙃</p>\n",
+				"content_text": "Ik heb het gewoon kou nou. 🙃\n",
+				"date_published": "2026-06-23T08:03:17+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/23/ik-heb-het-gewoon-kou.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/22/yesterday-we-had-solstice-wonderful.html",
+				
+				"content_html": "<p>Yesterday we had solstice. Wonderful. Shorter days ahead. The cozy seasons are coming. You can’t have enough autumn in your life.</p>\n",
+				"content_text": "Yesterday we had solstice. Wonderful. Shorter days ahead. The cozy seasons are coming. You can’t have enough autumn in your life.\n",
+				"date_published": "2026-06-22T22:33:43+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/22/yesterday-we-had-solstice-wonderful.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/06/22/nice-with-the-hot-weather.html",
+				
+				"content_html": "<p>Nice with the hot weather. ❄️❄️❄️☕️</p>\n<!-- raw HTML omitted -->\n",
+				"content_text": "Nice with the hot weather. ❄️❄️❄️☕️\n\n<img src=\"uploads/2026/fc655d01-efa2-44ee-b763-fcb6bc91a27a-4e110bbe.jpg\" width=\"450\" height=\"600\" alt=\"Nice with the hot weather. ❄️❄️❄️☕️\">\n",
+				"date_published": "2026-06-22T18:50:47+02:00",
+				"url": "https://micro.mjanssen.nl/2026/06/22/nice-with-the-hot-weather.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/06/22/hi-there-is-a-new.html",
 				
 				"content_html": "<p>Hi. 👋 there is a new kid in town. Microsphere.\nIt is a third party iOS client for micro.blog.</p>\n<p>You might like it. Try it here. It is free. No paywall. All is free and open. If you like there is an optional tip for me. But no must. 📝🚀 enjoy. Leave a review.</p>\n<p><a href=\"https://micro.mjanssen.nl/microsphere/\">micro.mjanssen.nl/microsphe&hellip;</a></p>\n",
@@ -118,7 +163,7 @@
 				"id": "http://marc0janssen.micro.blog/2026/06/18/seashells.html",
 				
 				"content_html": "<p>Seashells</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Seashells\n\n<img src=\"uploads/2026/3705a5a2-dae2-4e8a-8749-de42d99e4a2b-3447a983.jpg\" width=\"450\" height=\"600\" alt=\"Seashells\">\n",
+				"content_text": "Seashells\n\n<img src=\"https://micro.mjanssen.nl/uploads/2026/3705a5a2-dae2-4e8a-8749-de42d99e4a2b-3447a983.jpg\" width=\"450\" height=\"600\" alt=\"Seashells\">\n",
 				"date_published": "2026-06-18T15:17:21+02:00",
 				"url": "https://micro.mjanssen.nl/2026/06/18/seashells.html",
 				"tags": ["Microposts"]
@@ -2794,15 +2839,6 @@
 				"content_text": "It is a beautiful sunny saturday morning. A small coffee☕️, Macbook💻, sitting in the sun☀ behind the windows. Feels like an early spring.\r\n\r\nHave a great weekend, you all.\r\n",
 				"date_published": "2025-03-08T10:20:21+02:00",
 				"url": "https://micro.mjanssen.nl/2025/03/08/it-is-a-beautiful-sunny.html",
-				"tags": ["Microposts"]
-			},
-			{
-				"id": "http://marc0janssen.micro.blog/2025/03/08/it-is-a-beutiful-sunny.html",
-				
-				"content_html": "<p>It is a beutiful sunny saturday morning. A small coffee☕️, Macbook💻, sitting in the sun☀ behind the windows. Feels like an early spring.</p>\n<p>Have a great weekend, you all.</p>\n",
-				"content_text": "It is a beutiful sunny saturday morning. A small coffee☕️, Macbook💻, sitting in the sun☀ behind the windows. Feels like an early spring. \r\n\r\nHave a great weekend, you all.\n",
-				"date_published": "2025-03-08T10:15:47+02:00",
-				"url": "https://micro.mjanssen.nl/2025/03/08/it-is-a-beutiful-sunny.html",
 				"tags": ["Microposts"]
 			},
 			{
