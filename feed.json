@@ -7,6 +7,24 @@
 	"items": [
 		
 			{
+				"id": "http://marc0janssen.micro.blog/2026/10/06/nearly-book-bans-in-us.html",
+				
+				"content_html": "<p>Nearly 12,000 book bans in US public schools in a single year. In 2026.</p>\n<p>Where and when have we heard this sort of thing before?</p>\n<p>History rarely repeats itself word for word. But sometimes it really does have an unsettling rhyme.</p>\n",
+				"content_text": "Nearly 12,000 book bans in US public schools in a single year. In 2026.\n\nWhere and when have we heard this sort of thing before?\n\nHistory rarely repeats itself word for word. But sometimes it really does have an unsettling rhyme.\n",
+				"date_published": "2026-10-06T06:48:10+02:00",
+				"url": "https://micro.mjanssen.nl/2026/10/06/nearly-book-bans-in-us.html",
+				"tags": ["Microposts"]
+			},
+			{
+				"id": "http://marc0janssen.micro.blog/2026/10/05/dagenza-build-is-now-live.html",
+				
+				"content_html": "<p>Dagenza Build 8 is now live on TestFlight. 🎉</p>\n<p>The app is getting there nicely. The number of testers… slightly less so. 😅</p>\n<p>Fancy pressing buttons, breaking things and calling it “beta testing”? I could use you.</p>\n<p><a href=\"https://testflight.apple.com/join/sKcmUdAq\">testflight.apple.com/join/sKcm&hellip;</a></p>\n",
+				"content_text": "Dagenza Build 8 is now live on TestFlight. 🎉\n\nThe app is getting there nicely. The number of testers… slightly less so. 😅\n\nFancy pressing buttons, breaking things and calling it “beta testing”? I could use you.\n\n[testflight.apple.com/join/sKcm...](https://testflight.apple.com/join/sKcmUdAq)\n",
+				"date_published": "2026-10-05T21:46:41+02:00",
+				"url": "https://micro.mjanssen.nl/2026/10/05/dagenza-build-is-now-live.html",
+				"tags": ["Microposts"]
+			},
+			{
 				"id": "http://marc0janssen.micro.blog/2026/10/04/apple-calendar-and-i-have.html",
 				
 				"content_html": "<p>Apple Calendar and I have decided to see other people. 😇📅</p>\n<p>So I’m building Dagenza — a fresh calendar app for iPhone. A new build has just landed on TestFlight and I need curious humans to break it.</p>\n<p>Fancy a go? 👇<br>\n<a href=\"https://testflight.apple.com/join/sKcmUdAq\">testflight.apple.com/join/sKcm&hellip;</a></p>\n",
